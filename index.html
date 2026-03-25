@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>에듀케레 중등영어 분석지 | 천재(소영순) 중2</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#1a2744;
+  --navy-light:#243460;
+  --gold:#c8a84b;
+  --gold-light:#e8c96b;
+  --bg:#f5f3ee;
+  --white:#ffffff;
+  --gray:#f0ede8;
+  --text:#2c2c2c;
+  --correct:#2d7a3a;
+  --wrong:#c0392b;
+}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh;}
+
+/* ── 헤더 ── */
+.site-header{background:var(--navy);color:var(--white);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.4);}
+.site-header .logo-mark{width:38px;height:38px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-size:18px;font-weight:600;color:var(--navy);flex-shrink:0;}
+.site-header .brand{display:flex;flex-direction:column;}
+.site-header .brand-main{font-size:15px;font-weight:700;letter-spacing:.5px;}
+.site-header .brand-sub{font-size:11px;color:var(--gold-light);letter-spacing:1px;margin-top:1px;}
+.hamburger{margin-left:auto;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;}
+
+/* ── 레이아웃 ── */
+.layout{display:flex;flex:1;}
+
+/* ── 사이드바 ── */
+.sidebar{width:220px;background:var(--navy);color:var(--white);padding:20px 0;flex-shrink:0;min-height:calc(100vh - 66px);}
+.sidebar-title{font-size:11px;letter-spacing:2px;color:var(--gold);padding:0 18px 10px;border-bottom:1px solid rgba(200,168,75,.3);margin-bottom:8px;}
+.sidebar-item{padding:10px 18px;cursor:pointer;border-left:3px solid transparent;transition:all .2s;font-size:13px;}
+.sidebar-item:hover{background:rgba(255,255,255,.07);border-left-color:var(--gold);}
+.sidebar-item.active{background:rgba(200,168,75,.15);border-left-color:var(--gold);color:var(--gold-light);}
+.sidebar-item .unit-num{font-size:10px;color:var(--gold);display:block;margin-bottom:2px;letter-spacing:.5px;}
+.sidebar-item .unit-title{font-size:12px;line-height:1.4;}
+.sidebar-item .unit-meta{font-size:10px;color:rgba(255,255,255,.45);margin-top:2px;}
+
+/* ── 메인 콘텐츠 ── */
+.main{flex:1;padding:28px 32px;max-width:900px;}
+.unit-panel{display:none;}
+.unit-panel.active{display:block;}
+
+/* ── 단원 헤더 ── */
+.unit-header{background:var(--navy);color:var(--white);border-radius:12px;padding:24px 28px;margin-bottom:24px;position:relative;overflow:hidden;}
+.unit-header::before{content:'';position:absolute;right:-20px;top:-20px;width:140px;height:140px;background:rgba(200,168,75,.1);border-radius:50%;}
+.unit-header .lesson-tag{font-size:11px;letter-spacing:2px;color:var(--gold);margin-bottom:6px;}
+.unit-header h1{font-family:'EB Garamond',serif;font-size:26px;font-weight:600;margin-bottom:4px;}
+.unit-header .meta{font-size:12px;color:rgba(255,255,255,.55);}
+
+/* ── 탭 ── */
+.tab-bar{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:22px;background:var(--white);border-radius:10px;padding:6px;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+.tab-btn{padding:7px 13px;border:none;background:none;border-radius:7px;cursor:pointer;font-size:12px;font-family:'Noto Sans KR',sans-serif;font-weight:500;color:#666;transition:all .2s;white-space:nowrap;}
+.tab-btn:hover{background:var(--gray);}
+.tab-btn.active{background:var(--navy);color:var(--white);}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+/* ── 섹션 카드 ── */
+.section-card{background:var(--white);border-radius:10px;padding:20px 22px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+.section-title{font-size:14px;font-weight:700;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:6px;margin-bottom:14px;}
+
+/* ── 본문분석 ── */
+.dialogue-speaker{display:inline-block;font-weight:700;color:var(--navy);min-width:60px;}
+.sentence-block{margin-bottom:18px;padding-bottom:18px;border-bottom:1px dashed #ddd;}
+.sentence-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.sent-num{display:inline-block;width:24px;height:24px;background:var(--navy);color:var(--white);border-radius:50%;font-size:11px;text-align:center;line-height:24px;margin-right:6px;flex-shrink:0;}
+.sent-en{font-family:'EB Garamond',serif;font-size:17px;color:var(--navy);border:1.5px solid var(--navy);border-radius:7px;padding:8px 12px;margin:6px 0;line-height:1.6;}
+.sent-slash{font-size:13px;color:#555;margin:4px 0 2px;padding-left:4px;}
+.sent-kr{font-size:13px;color:#333;padding-left:4px;margin-bottom:8px;}
+.grammar-note{background:#f8f6f0;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:8px 12px;margin-top:6px;font-size:12px;line-height:1.7;}
+.grammar-note .note-title{font-weight:700;color:var(--navy);}
+.grammar-note .note-ex{color:#444;font-style:italic;}
+.grammar-note .note-point{color:var(--correct);font-weight:500;}
+.subsection-title{font-size:13px;font-weight:700;color:var(--navy);margin:16px 0 10px;padding:4px 10px;background:var(--gray);border-radius:5px;}
+
+/* ── 핵심단어 ── */
+.word-table{width:100%;border-collapse:collapse;font-size:13px;}
+.word-table th{background:var(--navy);color:var(--white);padding:8px 10px;text-align:left;font-weight:500;}
+.word-table td{padding:8px 10px;border-bottom:1px solid #eee;vertical-align:top;}
+.word-table tr:hover td{background:#fafaf7;}
+.word-table .w-word{font-weight:700;color:var(--navy);font-family:'EB Garamond',serif;font-size:15px;}
+.word-table .w-pos{font-size:11px;color:#888;background:#eee;padding:1px 5px;border-radius:3px;}
+.expr-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
+.expr-table th{background:var(--navy-light);color:var(--white);padding:7px 10px;text-align:left;font-weight:500;}
+.expr-table td{padding:8px 10px;border-bottom:1px solid #eee;vertical-align:top;}
+.expr-table .e-expr{font-weight:700;color:var(--navy);font-family:'EB Garamond',serif;font-size:14px;}
+
+/* ── 문법정리 ── */
+.grammar-card{background:var(--gray);border-radius:8px;padding:16px 18px;margin-bottom:14px;border-left:4px solid var(--navy);}
+.grammar-card h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.grammar-card .g-rule{font-size:13px;margin-bottom:8px;line-height:1.7;}
+.grammar-card .g-from{background:rgba(26,39,68,.07);border-radius:5px;padding:6px 10px;font-size:12px;margin-bottom:6px;}
+.grammar-card .g-from span{font-family:'EB Garamond',serif;font-style:italic;}
+.grammar-card .g-ex{font-size:12px;color:#555;margin-top:4px;}
+
+/* ── 퀴즈 공통 ── */
+.quiz-block{background:var(--white);border:1px solid #e0ddd6;border-radius:8px;padding:16px 18px;margin-bottom:14px;}
+.quiz-block .q-num{font-size:11px;font-weight:700;color:var(--gold);margin-bottom:4px;letter-spacing:.5px;}
+.quiz-block .q-type{font-size:10px;background:var(--navy);color:var(--white);padding:1px 6px;border-radius:3px;margin-left:4px;}
+.quiz-block .q-text{font-size:13px;margin-bottom:10px;line-height:1.7;}
+.quiz-block .q-text .blank{display:inline-block;border-bottom:2px solid var(--navy);min-width:60px;margin:0 3px;}
+.mc-options{display:flex;flex-direction:column;gap:6px;}
+.mc-btn{padding:7px 12px;border:1.5px solid #ccc;border-radius:6px;background:var(--white);cursor:pointer;font-size:13px;font-family:'Noto Sans KR',sans-serif;text-align:left;transition:all .2s;}
+.mc-btn:hover{border-color:var(--navy);background:#f0f0f8;}
+.mc-btn.correct-ans{background:#e8f5e9;border-color:var(--correct);color:var(--correct);}
+.mc-btn.wrong-ans{background:#fdecea;border-color:var(--wrong);color:var(--wrong);}
+.fill-input{border:none;border-bottom:2px solid var(--navy);background:transparent;font-size:14px;font-family:'EB Garamond',serif;padding:2px 4px;min-width:80px;outline:none;color:var(--navy);}
+.fill-input.correct{border-bottom-color:var(--correct);color:var(--correct);}
+.fill-input.wrong{border-bottom-color:var(--wrong);color:var(--wrong);}
+.quiz-feedback{font-size:12px;margin-top:8px;font-weight:600;min-height:18px;}
+.quiz-feedback.correct{color:var(--correct);}
+.quiz-feedback.wrong{color:var(--wrong);}
+.quiz-explain{font-size:12px;color:#666;margin-top:6px;padding-top:6px;border-top:1px solid #eee;line-height:1.6;}
+.quiz-actions{display:flex;gap:6px;margin-top:10px;}
+.btn-check{padding:5px 14px;background:var(--navy);color:var(--white);border:none;border-radius:5px;cursor:pointer;font-size:12px;font-family:'Noto Sans KR',sans-serif;}
+.btn-reset{padding:5px 10px;background:#eee;border:none;border-radius:5px;cursor:pointer;font-size:12px;font-family:'Noto Sans KR',sans-serif;}
+
+/* ── 서술형 ── */
+.essay-lines{margin:14px 0;}
+.essay-lines div{border-bottom:1.5px solid #999;height:32px;margin-bottom:8px;}
+.btn-toggle-ans{padding:7px 16px;background:var(--gold);color:var(--navy);border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700;font-family:'Noto Sans KR',sans-serif;margin-top:8px;}
+.model-answer{display:none;margin-top:12px;background:#f0f7f0;border-left:3px solid var(--correct);border-radius:0 6px 6px 0;padding:10px 14px;font-size:13px;line-height:1.8;}
+.model-answer.show{display:block;}
+
+/* ── 정답지 ── */
+.ans-section{margin-bottom:18px;}
+.ans-section h3{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;padding-bottom:4px;border-bottom:1px solid var(--gold);}
+.ans-list{display:flex;flex-direction:column;gap:5px;}
+.ans-item{font-size:13px;display:flex;gap:8px;}
+.ans-item .a-num{font-weight:700;color:var(--navy);min-width:30px;}
+.ans-item .a-val{color:#333;}
+
+/* ── 반응형 ── */
+@media(max-width:700px){
+  .sidebar{display:none;}
+  .sidebar.open{display:block;position:fixed;top:66px;left:0;z-index:99;height:100vh;overflow-y:auto;}
+  .main{padding:16px 14px;}
+  .tab-btn{font-size:11px;padding:6px 9px;}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo-mark">E</div>
+  <div class="brand">
+    <div class="brand-main">에듀케레 영수학원</div>
+    <div class="brand-sub">중등 영어 분석지 · 천재(소영순) 중2</div>
+  </div>
+  <button class="hamburger" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-title">UNIT LIST</div>
+  <div class="sidebar-item active" onclick="showUnit('u1')">
+    <span class="unit-num">LESSON 1</span>
+    <div class="unit-title">Better Sleep, Better Life</div>
+    <div class="unit-meta">천재(소영순) · 중2</div>
+  </div>
+  <div class="sidebar-item" onclick="showUnit('u2')">
+    <span class="unit-num">LESSON 2</span>
+    <div class="unit-title">Now One Foot, Now the Other</div>
+    <div class="unit-meta">천재(소영순) · 중2</div>
+  </div>
+</nav>
+<main class="main">
+<!-- ══════════════════════════════════════════
+     LESSON 1 · Better Sleep, Better Life
+══════════════════════════════════════════ -->
+<div class="unit-panel active" id="u1">
+<div class="unit-header">
+  <div class="lesson-tag">LESSON 1 · 천재(소영순) 중2</div>
+  <h1>Better Sleep, Better Life</h1>
+  <div class="meta">더 나은 수면, 더 나은 삶</div>
+</div>
+
+<!-- 탭 바 -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('u1','t1')">① 본문분석</button>
+  <button class="tab-btn" onclick="showTab('u1','t2')">② 핵심단어·표현</button>
+  <button class="tab-btn" onclick="showTab('u1','t3')">③ 주요문법</button>
+  <button class="tab-btn" onclick="showTab('u1','t4')">④ 문법연습</button>
+  <button class="tab-btn" onclick="showTab('u1','t5')">⑤ 본문이해</button>
+  <button class="tab-btn" onclick="showTab('u1','t6')">⑥ 서술형</button>
+  <button class="tab-btn" onclick="showTab('u1','t7')">⑦ 정답지</button>
+</div>
+
+<!-- ①본문분석 -->
+<div class="tab-content active" id="u1-t1">
+
+  <div class="section-card">
+    <div class="section-title">🗣 대화문 A — Listen and Circle</div>
+    <div class="subsection-title">대화 1 · Gina &amp; Leo</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">①</span>
+      <div class="sent-en">Gina: Leo, do you have any special goals for this year?</div>
+      <div class="sent-slash">Leo, / do you have / any special goals / for this year?</div>
+      <div class="sent-kr">레오, / 너는 가지고 있니 / 어떤 특별한 목표를 / 올해를 위한?</div>
+      <div class="grammar-note"><span class="note-title">◆ any + 복수명사</span><br>▶ <span class="note-ex">any special goals</span> — 의문문·부정문에서 "어떤 ~이든"을 나타냄<br><span class="note-point">★ some은 긍정문, any는 의문·부정문에 주로 사용</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">②</span>
+      <div class="sent-en">Leo: Yes, I'm planning to exercise more.</div>
+      <div class="sent-slash">Yes, / I'm planning / to exercise / more.</div>
+      <div class="sent-kr">네, / 저는 계획하고 있어요 / 운동하는 것을 / 더 많이.</div>
+      <div class="grammar-note"><span class="note-title">◆ be planning to + 동사원형</span><br>▶ <span class="note-ex">I'm planning to exercise</span> — 미래 계획을 나타내는 표현<br><span class="note-point">★ = I plan to exercise (현재시제로도 미래 계획 표현 가능)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">③</span>
+      <div class="sent-en">Gina: Good for you! What kind of exercise do you want to do?</div>
+      <div class="sent-slash">Good for you! / What kind of exercise / do you want to do?</div>
+      <div class="sent-kr">잘 됐네요! / 어떤 종류의 운동을 / 당신은 하고 싶나요?</div>
+      <div class="grammar-note"><span class="note-title">◆ What kind of ~?</span><br>▶ <span class="note-ex">What kind of exercise</span> — "어떤 종류의 ~?"를 묻는 의문문<br><span class="note-point">★ kind 대신 type, sort도 가능</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">④</span>
+      <div class="sent-en">Leo: I want to play badminton. Do you like badminton?</div>
+      <div class="sent-slash">I want / to play badminton. / Do you like badminton?</div>
+      <div class="sent-kr">저는 원해요 / 배드민턴을 치는 것을. / 당신은 배드민턴을 좋아하나요?</div>
+      <div class="grammar-note"><span class="note-title">◆ want to + 동사원형</span><br>▶ <span class="note-ex">I want to play badminton</span> — "~하고 싶다" (희망·바람)<br><span class="note-point">★ to play = to부정사 (명사적 용법: 목적어 역할)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑤</span>
+      <div class="sent-en">Gina: Yes, I love it. Let's play together sometime.</div>
+      <div class="sent-slash">Yes, I love it. / Let's play together / sometime.</div>
+      <div class="sent-kr">네, 저도 좋아해요. / 함께 쳐요 / 언젠가.</div>
+      <div class="grammar-note"><span class="note-title">◆ Let's + 동사원형</span><br>▶ <span class="note-ex">Let's play together</span> — "~하자"는 제안 표현<br><span class="note-point">★ Let's = Let us의 축약형</span></div>
+    </div>
+
+    <div class="subsection-title">대화 2 · Kevin &amp; Emma</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑥</span>
+      <div class="sent-en">Kevin: Emma, what are you going to do this Saturday?</div>
+      <div class="sent-slash">Emma, / what are you going to do / this Saturday?</div>
+      <div class="sent-kr">Emma, / 너는 무엇을 할 예정이니 / 이번 토요일에?</div>
+      <div class="grammar-note"><span class="note-title">◆ be going to + 동사원형</span><br>▶ <span class="note-ex">are you going to do</span> — 예정·계획된 미래를 나타냄<br><span class="note-point">★ will보다 구체적인 계획에 be going to 사용</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑦</span>
+      <div class="sent-en">Emma: Nothing special. Why?</div>
+      <div class="sent-slash">Nothing special. / Why?</div>
+      <div class="sent-kr">특별한 것 없어. / 왜?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑧</span>
+      <div class="sent-en">Kevin: I'm planning to go to a K-pop concert. Do you want to join me?</div>
+      <div class="sent-slash">I'm planning / to go to a K-pop concert. / Do you want / to join me?</div>
+      <div class="sent-kr">나는 계획하고 있어 / K-pop 콘서트에 가는 것을. / 너도 원하니 / 나와 함께 하는 것을?</div>
+      <div class="grammar-note"><span class="note-title">◆ Do you want to ~?</span><br>▶ <span class="note-ex">Do you want to join me?</span> — "~하고 싶니?"로 상대방의 의향을 묻는 표현<br><span class="note-point">★ join me = 나와 함께 하다</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑨</span>
+      <div class="sent-en">Emma: Wow, I'd love to! What time is the concert?</div>
+      <div class="sent-slash">Wow, I'd love to! / What time is the concert?</div>
+      <div class="sent-kr">와, 너무 좋아! / 콘서트가 몇 시예요?</div>
+      <div class="grammar-note"><span class="note-title">◆ I'd love to!</span><br>▶ <span class="note-ex">I'd love to!</span> — "정말 그러고 싶어!"라는 열렬한 수락 표현<br><span class="note-point">★ I'd = I would의 축약형, to 뒤에 동사 생략됨</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑩</span>
+      <div class="sent-en">Kevin: It starts at 6 p.m.</div>
+      <div class="sent-slash">It starts / at 6 p.m.</div>
+      <div class="sent-kr">오후 6시에 시작해.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑪</span>
+      <div class="sent-en">Emma: Okay. I can't wait.</div>
+      <div class="sent-slash">Okay. / I can't wait.</div>
+      <div class="sent-kr">알겠어. / 너무 기다려져.</div>
+      <div class="grammar-note"><span class="note-title">◆ I can't wait.</span><br>▶ 직역 "기다릴 수 없어" → 의역 "너무 기대돼 / 빨리 하고 싶어"<br><span class="note-point">★ 기대감을 나타내는 관용 표현</span></div>
+    </div>
+
+    <div class="subsection-title">대화 3 · Amy &amp; Bill</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑫</span>
+      <div class="sent-en">Amy: I'm learning to play the guitar these days. My friend Minji is teaching me.</div>
+      <div class="sent-slash">I'm learning / to play the guitar / these days. / My friend Minji / is teaching me.</div>
+      <div class="sent-kr">나는 배우고 있어 / 기타 치는 것을 / 요즘. / 내 친구 민지가 / 나를 가르쳐 주고 있어.</div>
+      <div class="grammar-note"><span class="note-title">◆ 현재진행형 (be + -ing)</span><br>▶ <span class="note-ex">I'm learning / Minji is teaching</span> — 지금 진행 중인 동작<br><span class="note-point">★ these days와 함께 쓰여 요즘의 반복적 상황 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑬</span>
+      <div class="sent-en">Bill: Who is Minji?</div>
+      <div class="sent-slash">Who / is Minji?</div>
+      <div class="sent-kr">민지가 누구야?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑭</span>
+      <div class="sent-en">Amy: She is the guitarist in the school band.</div>
+      <div class="sent-slash">She is / the guitarist / in the school band.</div>
+      <div class="sent-kr">그녀는 / 기타리스트야 / 학교 밴드의.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑮</span>
+      <div class="sent-en">Bill: Cool! Maybe you can perform in the future.</div>
+      <div class="sent-slash">Cool! / Maybe / you can perform / in the future.</div>
+      <div class="sent-kr">멋진데! / 아마 / 너는 공연할 수 있을 거야 / 미래에.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑯</span>
+      <div class="sent-en">Amy: Yes. Actually, I want to perform at the school festival.</div>
+      <div class="sent-slash">Yes. / Actually, / I want to perform / at the school festival.</div>
+      <div class="sent-kr">응. / 사실, / 나는 공연하고 싶어 / 학교 축제에서.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑰</span>
+      <div class="sent-en">Bill: Sounds great. You can do it!</div>
+      <div class="sent-slash">Sounds great. / You can do it!</div>
+      <div class="sent-kr">좋겠다. / 너는 할 수 있어!</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-title">🗣 대화문 B — In Everyday Life</div>
+    <div class="subsection-title">Jinsu &amp; Nicole</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">①</span>
+      <div class="sent-en">Jinsu: Nicole, what are your goals for this year?</div>
+      <div class="sent-slash">Nicole, / what are your goals / for this year?</div>
+      <div class="sent-kr">Nicole, / 올해 목표가 뭐야?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">②</span>
+      <div class="sent-en">Nicole: I'm planning to read 30 books. I tried last year but didn't make it.</div>
+      <div class="sent-slash">I'm planning / to read 30 books. / I tried last year / but didn't make it.</div>
+      <div class="sent-kr">나는 계획 중이야 / 책 30권 읽는 것을. / 작년에 시도했지만 / 해내지 못했어.</div>
+      <div class="grammar-note"><span class="note-title">◆ make it</span><br>▶ <span class="note-ex">didn't make it</span> — "해내다, 성공하다"의 숙어<br><span class="note-point">★ 반대: make it → 해내다 / didn't make it → 해내지 못했다</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">③</span>
+      <div class="sent-en">Jinsu: That's a big goal.</div>
+      <div class="sent-slash">That's / a big goal.</div>
+      <div class="sent-kr">그건 / 큰 목표네.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">④</span>
+      <div class="sent-en">Nicole: Yes, I really want to do it this time.</div>
+      <div class="sent-slash">Yes, / I really want / to do it / this time.</div>
+      <div class="sent-kr">응, / 나는 정말 하고 싶어 / 그것을 / 이번에는.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑤</span>
+      <div class="sent-en">Jinsu: You can do it! Just read a little every day.</div>
+      <div class="sent-slash">You can do it! / Just read a little / every day.</div>
+      <div class="sent-kr">넌 할 수 있어! / 그냥 조금씩 읽어 / 매일.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑥</span>
+      <div class="sent-en">Nicole: Okay, I will. What are your goals, Jinsu?</div>
+      <div class="sent-slash">Okay, I will. / What are your goals, / Jinsu?</div>
+      <div class="sent-kr">알겠어, 그렇게 할게. / 진수야, 네 목표는 뭐야?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑦</span>
+      <div class="sent-en">Jinsu: I'm planning to run for the election. I want to become class president.</div>
+      <div class="sent-slash">I'm planning / to run for the election. / I want / to become class president.</div>
+      <div class="sent-kr">나는 계획 중이야 / 선거에 출마하는 것을. / 나는 원해 / 반장이 되는 것을.</div>
+      <div class="grammar-note"><span class="note-title">◆ run for ~</span><br>▶ <span class="note-ex">run for the election</span> — "~에 출마하다" (선거 관련 숙어)<br><span class="note-point">★ become + 명사(직책) → "~이 되다"</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑧</span>
+      <div class="sent-en">Nicole: You're good at listening to people. You'll be a great leader.</div>
+      <div class="sent-slash">You're good at / listening to people. / You'll be / a great leader.</div>
+      <div class="sent-kr">너는 잘하잖아 / 사람들 말을 듣는 것을. / 너는 될 거야 / 훌륭한 리더가.</div>
+      <div class="grammar-note"><span class="note-title">◆ be good at + -ing</span><br>▶ <span class="note-ex">good at listening</span> — "~을 잘하다" (전치사 at 뒤에 동명사)<br><span class="note-point">★ at 뒤에는 반드시 동명사(-ing) 형태 사용</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑨</span>
+      <div class="sent-en">Jinsu: Thank you for saying so.</div>
+      <div class="sent-slash">Thank you / for saying so.</div>
+      <div class="sent-kr">고마워 / 그렇게 말해줘서.</div>
+      <div class="grammar-note"><span class="note-title">◆ Thank you for + -ing</span><br>▶ <span class="note-ex">Thank you for saying</span> — "~해줘서 고마워" (전치사 for 뒤 동명사)<br><span class="note-point">★ for + 동명사 = 감사의 이유</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑩</span>
+      <div class="sent-en">Nicole: You're welcome. I hope we can reach our goals.</div>
+      <div class="sent-slash">You're welcome. / I hope / we can reach our goals.</div>
+      <div class="sent-kr">천만에. / 나는 바라 / 우리가 목표를 이룰 수 있기를.</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-title">🗣 대화문 A — Watch and Choose (Hans)</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">①</span>
+      <div class="sent-en">Hi, everyone! I'm Hans from Germany.</div>
+      <div class="sent-slash">Hi, everyone! / I'm Hans / from Germany.</div>
+      <div class="sent-kr">안녕, 모두! / 나는 Hans야 / 독일 출신의.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">②</span>
+      <div class="sent-en">Do you ride a bike often?</div>
+      <div class="sent-slash">Do you ride a bike / often?</div>
+      <div class="sent-kr">너희는 자전거를 자주 타니?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">③</span>
+      <div class="sent-en">In my country, we have bike classes at school.</div>
+      <div class="sent-slash">In my country, / we have bike classes / at school.</div>
+      <div class="sent-kr">우리나라에서는, / 우리는 자전거 수업이 있어 / 학교에서.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">④</span>
+      <div class="sent-en">We also have a road safety test to ride a bike on the road.</div>
+      <div class="sent-slash">We also have / a road safety test / to ride a bike / on the road.</div>
+      <div class="sent-kr">우리는 또한 있어 / 도로 안전 시험이 / 자전거를 타기 위한 / 도로에서.</div>
+      <div class="grammar-note"><span class="note-title">◆ to부정사의 형용사적 용법</span><br>▶ <span class="note-ex">a road safety test to ride</span> — 명사를 뒤에서 수식하는 to부정사<br><span class="note-point">★ "도로에서 자전거를 타기 위한 시험"</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑤</span>
+      <div class="sent-en">This Saturday, I'm planning to ride a bike with my little sister.</div>
+      <div class="sent-slash">This Saturday, / I'm planning / to ride a bike / with my little sister.</div>
+      <div class="sent-kr">이번 토요일에, / 나는 계획 중이야 / 자전거 타는 것을 / 내 여동생과 함께.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑥</span>
+      <div class="sent-en">She's going to have the road safety test soon, so we will practice together.</div>
+      <div class="sent-slash">She's going to have / the road safety test / soon, / so we will practice together.</div>
+      <div class="sent-kr">그녀는 곧 받을 예정이야 / 도로 안전 시험을 / 곧, / 그래서 우리는 함께 연습할 거야.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑦</span>
+      <div class="sent-en">Do you have any special plans for the weekend? I'd love to hear from you.</div>
+      <div class="sent-slash">Do you have / any special plans / for the weekend? / I'd love to hear / from you.</div>
+      <div class="sent-kr">너희는 있니 / 어떤 특별한 계획이 / 주말을 위한? / 나는 듣고 싶어 / 너희로부터.</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-title">📖 본문 — Better Sleep, Better Life</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">①</span>
+      <div class="sent-en">Welcome back to school.</div>
+      <div class="sent-slash">Welcome back / to school.</div>
+      <div class="sent-kr">다시 돌아온 것을 환영합니다 / 학교에.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">②</span>
+      <div class="sent-en">How do you feel today? Did you sleep well last night?</div>
+      <div class="sent-slash">How do you feel / today? / Did you sleep well / last night?</div>
+      <div class="sent-kr">오늘 기분이 어때요? / 어젯밤에 잘 잤나요?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">③</span>
+      <div class="sent-en">Sleeping well can give you energy for the new school year.</div>
+      <div class="sent-slash">Sleeping well / can give you / energy / for the new school year.</div>
+      <div class="sent-kr">잘 자는 것은 / 줄 수 있어요 / 에너지를 / 새 학년을 위한.</div>
+      <div class="grammar-note"><span class="note-title">◆ 동명사 주어</span><br>▶ <span class="note-ex">Sleeping well can give</span> — 동명사(Sleeping)가 문장의 주어 역할<br><span class="note-point">★ 동명사 주어는 단수 취급 → can give (3인칭 단수)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">④</span>
+      <div class="sent-en">Now, check your sleep habits with the list.</div>
+      <div class="sent-slash">Now, / check / your sleep habits / with the list.</div>
+      <div class="sent-kr">이제, / 확인해 보세요 / 여러분의 수면 습관을 / 목록으로.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑤</span>
+      <div class="sent-en">How many habits did you check?</div>
+      <div class="sent-slash">How many habits / did you check?</div>
+      <div class="sent-kr">몇 가지 습관에 / 체크하셨나요?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑥</span>
+      <div class="sent-en">These habits may cause sleep problems.</div>
+      <div class="sent-slash">These habits / may cause / sleep problems.</div>
+      <div class="sent-kr">이런 습관들은 / 야기할 수 있어요 / 수면 문제를.</div>
+      <div class="grammar-note"><span class="note-title">◆ 조동사 may</span><br>▶ <span class="note-ex">may cause</span> — "~일 수도 있다" (가능성)<br><span class="note-point">★ may = 50% 정도의 가능성을 나타냄</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑦</span>
+      <div class="sent-en">Do you think you need a change?</div>
+      <div class="sent-slash">Do you think / you need / a change?</div>
+      <div class="sent-kr">당신은 생각하나요 / 당신이 필요하다고 / 변화가?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑧</span>
+      <div class="sent-en">Let's find out what to do.</div>
+      <div class="sent-slash">Let's find out / what to do.</div>
+      <div class="sent-kr">알아봅시다 / 무엇을 해야 할지를.</div>
+      <div class="grammar-note"><span class="note-title">◆ 의문사 + to부정사</span><br>▶ <span class="note-ex">what to do</span> — "무엇을 해야 할지" (=what we should do)<br><span class="note-point">★ how to do, when to go 등도 같은 구조</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑨</span>
+      <div class="sent-en">Your body has a "clock."</div>
+      <div class="sent-slash">Your body / has / a "clock."</div>
+      <div class="sent-kr">당신의 몸은 / 가지고 있어요 / "시계"를.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑩</span>
+      <div class="sent-en">The body clock tells you when to wake up and sleep.</div>
+      <div class="sent-slash">The body clock / tells you / when to wake up / and sleep.</div>
+      <div class="sent-kr">체내 시계는 / 알려줍니다 / 언제 일어나야 할지 / 그리고 잠들어야 할지.</div>
+      <div class="grammar-note"><span class="note-title">◆ 의문사 + to부정사 (목적어)</span><br>▶ <span class="note-ex">when to wake up</span> — "언제 일어나야 할지" (=when you should wake up)<br><span class="note-point">★ tell + 목적어 + 의문사 + to부정사 구조</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑪</span>
+      <div class="sent-en">For example, in the morning, your body starts to feel lively.</div>
+      <div class="sent-slash">For example, / in the morning, / your body starts / to feel lively.</div>
+      <div class="sent-kr">예를 들어, / 아침에, / 당신의 몸은 시작해요 / 활기차게 느끼기를.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑫</span>
+      <div class="sent-en">At night, your body starts to feel sleepy.</div>
+      <div class="sent-slash">At night, / your body starts / to feel sleepy.</div>
+      <div class="sent-kr">밤에는, / 당신의 몸은 시작해요 / 졸리게 느끼기를.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑬</span>
+      <div class="sent-en">Listen to your body clock and sleep regularly. You will feel healthier.</div>
+      <div class="sent-slash">Listen to your body clock / and sleep regularly. / You will feel / healthier.</div>
+      <div class="sent-kr">체내 시계에 귀 기울이고 / 규칙적으로 자세요. / 당신은 느낄 거예요 / 더 건강하게.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑭</span>
+      <div class="sent-en">Caffeine can cause sleep problems.</div>
+      <div class="sent-slash">Caffeine / can cause / sleep problems.</div>
+      <div class="sent-kr">카페인은 / 야기할 수 있어요 / 수면 문제를.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑮</span>
+      <div class="sent-en">Do you know that even chocolate has caffeine?</div>
+      <div class="sent-slash">Do you know / that even chocolate / has caffeine?</div>
+      <div class="sent-kr">알고 있나요 / 심지어 초콜릿에도 / 카페인이 있다는 것을?</div>
+      <div class="grammar-note"><span class="note-title">◆ that절 (목적어)</span><br>▶ <span class="note-ex">know that even chocolate has caffeine</span> — 동사 know의 목적어로 that절<br><span class="note-point">★ even = "심지어 ~도" (강조 부사)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑯</span>
+      <div class="sent-en">Caffeine hides in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks.</div>
+      <div class="sent-slash">Caffeine hides / in many foods and drinks / such as chocolate, coffee, tea, soda, and energy drinks.</div>
+      <div class="sent-kr">카페인은 숨어 있어요 / 많은 음식과 음료에 / 초콜릿, 커피, 차, 탄산음료, 에너지 드링크 등.</div>
+      <div class="grammar-note"><span class="note-title">◆ such as ~</span><br>▶ <span class="note-ex">such as chocolate, coffee</span> — "~와 같은" 예시를 나열할 때 사용<br><span class="note-point">★ such as = for example (예시 나열)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑰</span>
+      <div class="sent-en">Exercise during the day.</div>
+      <div class="sent-slash">Exercise / during the day.</div>
+      <div class="sent-kr">운동하세요 / 낮 동안에.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑱</span>
+      <div class="sent-en">Then, your body will feel a little tired, and you will fall asleep easily at night.</div>
+      <div class="sent-slash">Then, / your body will feel / a little tired, / and you will fall asleep / easily / at night.</div>
+      <div class="sent-kr">그러면, / 당신의 몸은 느낄 거예요 / 약간 피곤하게, / 그리고 당신은 잠들 거예요 / 쉽게 / 밤에.</div>
+      <div class="grammar-note"><span class="note-title">◆ fall asleep</span><br>▶ <span class="note-ex">you will fall asleep</span> — "잠들다" (숙어)<br><span class="note-point">★ fall asleep ↔ wake up (깨다)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑲</span>
+      <div class="sent-en">Remember to finish exercising a few hours before bedtime.</div>
+      <div class="sent-slash">Remember / to finish exercising / a few hours / before bedtime.</div>
+      <div class="sent-kr">기억하세요 / 운동 끝내는 것을 / 몇 시간 전에 / 잠자리에 들기.</div>
+      <div class="grammar-note"><span class="note-title">◆ remember to + 동사원형</span><br>▶ <span class="note-ex">Remember to finish</span> — "~할 것을 기억하다" (미래 행동)<br><span class="note-point">★ remember -ing = 과거에 한 것을 기억하다 (의미 차이 주의!)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑳</span>
+      <div class="sent-en">If you finish it right before bedtime, your body may feel too awake.</div>
+      <div class="sent-slash">If you finish it / right before bedtime, / your body may feel / too awake.</div>
+      <div class="sent-kr">만약 바로 전에 끝낸다면 / 잠자리에 들기, / 당신의 몸은 느낄 수도 있어요 / 너무 깨어있게.</div>
+      <div class="grammar-note"><span class="note-title">◆ if 조건절</span><br>▶ <span class="note-ex">If you finish it...</span> — 조건의 부사절: if절에는 현재시제, 주절에는 미래/조동사<br><span class="note-point">★ if절에 will 사용 금지 → If you finish (O) / If you will finish (X)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉑</span>
+      <div class="sent-en">You may not fall asleep easily.</div>
+      <div class="sent-slash">You may not / fall asleep / easily.</div>
+      <div class="sent-kr">당신은 잠들지 못할 수도 있어요 / 쉽게.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉒</span>
+      <div class="sent-en">If you use your smartphone late at night, your brain will stay active.</div>
+      <div class="sent-slash">If you use / your smartphone / late at night, / your brain will stay / active.</div>
+      <div class="sent-kr">만약 사용한다면 / 스마트폰을 / 밤 늦게, / 당신의 뇌는 계속될 거예요 / 활성화된 상태로.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉓</span>
+      <div class="sent-en">The blue light from the phone will also tell your brain, "Hey, don't sleep yet."</div>
+      <div class="sent-slash">The blue light / from the phone / will also tell / your brain, / "Hey, don't sleep yet."</div>
+      <div class="sent-kr">파란 빛은 / 핸드폰에서 나오는 / 또한 말할 거예요 / 당신의 뇌에게, / "이봐, 아직 자지 마."</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉔</span>
+      <div class="sent-en">To sleep well, don't use your phone right before bedtime.</div>
+      <div class="sent-slash">To sleep well, / don't use / your phone / right before bedtime.</div>
+      <div class="sent-kr">잘 자기 위해, / 사용하지 마세요 / 핸드폰을 / 바로 잠들기 전에.</div>
+      <div class="grammar-note"><span class="note-title">◆ to부정사 (목적 용법)</span><br>▶ <span class="note-ex">To sleep well</span> — "잘 자기 위해서" (목적)<br><span class="note-point">★ To + 동사원형이 문장 앞에 오면 목적 해석 → "~하기 위해"</span></div>
+    </div>
+  </div>
+</div><!-- end tab t1 -->
+
+<!-- ②핵심단어·표현 -->
+<div class="tab-content" id="u1-t2">
+  <div class="section-card">
+    <div class="section-title">📚 핵심 어휘</div>
+    <table class="word-table">
+      <tr><th>단어</th><th>뜻</th><th>품사</th><th>예문</th></tr>
+      <tr><td class="w-word">goal</td><td>목표, 골</td><td><span class="w-pos">명</span></td><td>My goal is to study harder.</td></tr>
+      <tr><td class="w-word">plan</td><td>계획하다; 계획</td><td><span class="w-pos">동/명</span></td><td>I plan to travel this summer.</td></tr>
+      <tr><td class="w-word">perform</td><td>공연하다, 수행하다</td><td><span class="w-pos">동</span></td><td>She will perform at the festival.</td></tr>
+      <tr><td class="w-word">election</td><td>선거</td><td><span class="w-pos">명</span></td><td>He ran for the election.</td></tr>
+      <tr><td class="w-word">habit</td><td>습관</td><td><span class="w-pos">명</span></td><td>Good habits lead to a healthy life.</td></tr>
+      <tr><td class="w-word">cause</td><td>야기하다, 원인</td><td><span class="w-pos">동/명</span></td><td>Stress can cause sleep problems.</td></tr>
+      <tr><td class="w-word">regularly</td><td>규칙적으로</td><td><span class="w-pos">부</span></td><td>Sleep regularly every night.</td></tr>
+      <tr><td class="w-word">caffeine</td><td>카페인</td><td><span class="w-pos">명</span></td><td>Coffee contains a lot of caffeine.</td></tr>
+      <tr><td class="w-word">active</td><td>활동적인, 활성화된</td><td><span class="w-pos">형</span></td><td>Stay active during the day.</td></tr>
+      <tr><td class="w-word">bedtime</td><td>잠자리에 드는 시간</td><td><span class="w-pos">명</span></td><td>Don't eat right before bedtime.</td></tr>
+      <tr><td class="w-word">brain</td><td>뇌</td><td><span class="w-pos">명</span></td><td>The brain needs rest.</td></tr>
+      <tr><td class="w-word">lively</td><td>활기찬, 생기 넘치는</td><td><span class="w-pos">형</span></td><td>I feel lively in the morning.</td></tr>
+    </table>
+  </div>
+  <div class="section-card">
+    <div class="section-title">💬 주요 표현·숙어</div>
+    <table class="expr-table">
+      <tr><th>표현</th><th>뜻</th><th>사용 예</th></tr>
+      <tr><td class="e-expr">be planning to</td><td>~할 계획이다</td><td>I'm planning to join the club.</td></tr>
+      <tr><td class="e-expr">I'd love to</td><td>정말 그러고 싶어</td><td>I'd love to come to your party.</td></tr>
+      <tr><td class="e-expr">I can't wait</td><td>너무 기대된다</td><td>I can't wait for the holidays!</td></tr>
+      <tr><td class="e-expr">make it</td><td>해내다, 성공하다</td><td>She tried hard but didn't make it.</td></tr>
+      <tr><td class="e-expr">be good at -ing</td><td>~을 잘하다</td><td>He is good at playing soccer.</td></tr>
+      <tr><td class="e-expr">fall asleep</td><td>잠들다</td><td>I fell asleep on the sofa.</td></tr>
+      <tr><td class="e-expr">such as</td><td>~와 같은</td><td>I like fruits such as apples and grapes.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ③주요문법 -->
+<div class="tab-content" id="u1-t3">
+  <div class="section-card">
+    <div class="section-title">📐 주요 문법 정리</div>
+
+    <div class="grammar-card">
+      <h3>① be going to / be planning to — 미래 표현</h3>
+      <div class="g-rule">
+        <b>형태:</b> am/are/is + going to + 동사원형 / am/are/is + planning to + 동사원형<br>
+        <b>의미:</b> "~할 예정이다 / ~할 계획이다" — 미래에 할 것으로 계획되거나 예정된 일을 나타냄<br>
+        <b>차이:</b> will은 즉흥적 결정, be going to/be planning to는 미리 계획된 것
+      </div>
+      <div class="g-from">📖 본문: <span>"What are you going to do this Saturday?" / "I'm planning to go to a K-pop concert."</span></div>
+      <div class="g-ex">➕ 추가 예문 1: She is going to study abroad next year.<br>➕ 추가 예문 2: We are planning to visit Jeju Island this summer.</div>
+    </div>
+
+    <div class="grammar-card">
+      <h3>② 동명사 (-ing) — 주어·목적어 역할</h3>
+      <div class="g-rule">
+        <b>형태:</b> 동사원형 + -ing<br>
+        <b>의미:</b> "~하는 것" — 동사가 명사처럼 주어나 목적어 역할을 함<br>
+        <b>주의:</b> be good at, Thank you for, stop, enjoy 등의 뒤에는 반드시 동명사 사용
+      </div>
+      <div class="g-from">📖 본문: <span>"Sleeping well can give you energy." / "You're good at listening to people." / "Thank you for saying so."</span></div>
+      <div class="g-ex">➕ 추가 예문 1: Swimming is good for your health. (주어)<br>➕ 추가 예문 2: She enjoys reading books. (목적어)</div>
+    </div>
+
+    <div class="grammar-card">
+      <h3>③ 의문사 + to부정사 (what to do, when to wake up)</h3>
+      <div class="g-rule">
+        <b>형태:</b> 의문사(what/when/how/where) + to + 동사원형<br>
+        <b>의미:</b> "~해야 할지, ~하는 방법" — = 의문사 + 주어 + should + 동사원형으로 바꿀 수 있음<br>
+        <b>역할:</b> 문장에서 주어, 목적어, 보어로 사용됨
+      </div>
+      <div class="g-from">📖 본문: <span>"Let's find out what to do." / "The body clock tells you when to wake up and sleep."</span></div>
+      <div class="g-ex">➕ 추가 예문 1: I don't know how to ride a bike. (= how I should ride)<br>➕ 추가 예문 2: Tell me where to go. (= where I should go)</div>
+    </div>
+
+    <div class="grammar-card">
+      <h3>④ if 조건절 — 현재시제로 미래 조건 표현</h3>
+      <div class="g-rule">
+        <b>형태:</b> If + 주어 + 현재시제, 주어 + will/may + 동사원형<br>
+        <b>의미:</b> "만약 ~한다면, ~할 것이다"<br>
+        <b>주의:</b> if절 안에는 will 사용 금지! → If you finish (O) / If you will finish (X)
+      </div>
+      <div class="g-from">📖 본문: <span>"If you finish it right before bedtime, your body may feel too awake." / "If you use your smartphone late at night, your brain will stay active."</span></div>
+      <div class="g-ex">➕ 추가 예문 1: If it rains tomorrow, I will stay home.<br>➕ 추가 예문 2: If you eat too much sugar, you may have health problems.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ④문법연습 -->
+<div class="tab-content" id="u1-t4">
+  <div class="section-card">
+    <div class="section-title">✏️ 문법 연습문제</div>
+
+    <!-- Q1 빈칸채우기 -->
+    <div class="quiz-block" id="u1g1">
+      <div class="q-num">Q1 <span class="q-type">빈칸 채우기</span></div>
+      <div class="q-text">다음 빈칸에 알맞은 형태를 쓰시오.<br><br>
+        A: What are you ________ to do this weekend?<br>
+        B: I'm ________ to visit my grandma.<br>
+        <small style="color:#888">(go / plan)</small>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <input class="fill-input" id="u1g1a" placeholder="①" style="width:80px">
+        <input class="fill-input" id="u1g1b" placeholder="②" style="width:80px">
+      </div>
+      <div class="quiz-actions">
+        <button class="btn-check" onclick="checkFillMulti('u1g1',['going','planning'])">확인</button>
+        <button class="btn-reset" onclick="resetFillMulti('u1g1',2)">↺</button>
+      </div>
+      <div class="quiz-feedback" id="u1g1-fb"></div>
+      <div class="quiz-explain">💡 be going to = 예정된 미래 / be planning to = 계획된 미래 (두 표현 모두 미래 계획 표현)</div>
+    </div>
+
+    <!-- Q2 선다형 -->
+    <div class="quiz-block" id="u1g2">
+      <div class="q-num">Q2 <span class="q-type">선다형</span></div>
+      <div class="q-text">다음 중 밑줄 친 부분의 쓰임이 나머지와 다른 것은?</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u1g2',this,false)">① <u>Swimming</u> is good exercise.</button>
+        <button class="mc-btn" onclick="checkMC('u1g2',this,false)">② She enjoys <u>reading</u> books.</button>
+        <button class="mc-btn" onclick="checkMC('u1g2',this,false)">③ He is good at <u>listening</u> to others.</button>
+        <button class="mc-btn" onclick="checkMC('u1g2',this,true)">④ I am <u>planning</u> to go shopping. (be동사 + -ing = 진행형)</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u1g2')">↺</button></div>
+      <div class="quiz-feedback" id="u1g2-fb"></div>
+      <div class="quiz-explain">💡 ①②③ 은 동명사(명사 역할), ④는 현재진행형(be + -ing)으로 쓰임이 다름</div>
+    </div>
+
+    <!-- Q3 틀린 곳 고치기 -->
+    <div class="quiz-block" id="u1g3">
+      <div class="q-num">Q3 <span class="q-type">틀린 곳 고치기</span></div>
+      <div class="q-text">밑줄 친 부분 중 틀린 것을 고르시오.<br><br>
+        If you ①<u>will use</u> your smartphone ②<u>late at night</u>, your brain ③<u>will stay</u> ④<u>active</u>.</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u1g3',this,true)">① will use → use</button>
+        <button class="mc-btn" onclick="checkMC('u1g3',this,false)">② late at night</button>
+        <button class="mc-btn" onclick="checkMC('u1g3',this,false)">③ will stay</button>
+        <button class="mc-btn" onclick="checkMC('u1g3',this,false)">④ active</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u1g3')">↺</button></div>
+      <div class="quiz-feedback" id="u1g3-fb"></div>
+      <div class="quiz-explain">💡 if 조건절 안에서는 will 사용 불가 → use (현재시제)로 써야 함</div>
+    </div>
+
+    <!-- Q4 선다형 (의문사+to부정사) -->
+    <div class="quiz-block" id="u1g4">
+      <div class="q-num">Q4 <span class="q-type">선다형</span></div>
+      <div class="q-text">다음 빈칸에 알맞은 말을 고르시오.<br><br>
+        I don't know ________ to solve this problem.</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u1g4',this,false)">① what</button>
+        <button class="mc-btn" onclick="checkMC('u1g4',this,true)">② how</button>
+        <button class="mc-btn" onclick="checkMC('u1g4',this,false)">③ when</button>
+        <button class="mc-btn" onclick="checkMC('u1g4',this,false)">④ where</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u1g4')">↺</button></div>
+      <div class="quiz-feedback" id="u1g4-fb"></div>
+      <div class="quiz-explain">💡 "어떻게 풀어야 할지" = how to solve. how to = 방법을 나타냄</div>
+    </div>
+
+    <!-- Q5 빈칸채우기 (동명사) -->
+    <div class="quiz-block" id="u1g5">
+      <div class="q-num">Q5 <span class="q-type">빈칸 채우기</span></div>
+      <div class="q-text">괄호 안의 단어를 알맞은 형태로 바꾸어 빈칸을 채우시오.<br><br>
+        ________ well can give you energy. (sleep)</div>
+      <input class="fill-input" id="u1g5a" placeholder="답" style="width:120px">
+      <div class="quiz-actions">
+        <button class="btn-check" onclick="checkFill('u1g5','Sleeping')">확인</button>
+        <button class="btn-reset" onclick="resetFill('u1g5')">↺</button>
+      </div>
+      <div class="quiz-feedback" id="u1g5-fb"></div>
+      <div class="quiz-explain">💡 동사 sleep이 문장 주어 자리 → 동명사 Sleeping으로 변환</div>
+    </div>
+
+    <!-- Q6 문장완성 -->
+    <div class="quiz-block" id="u1g6">
+      <div class="q-num">Q6 <span class="q-type">문장 완성하기</span></div>
+      <div class="q-text">다음 우리말과 같도록 빈칸에 알맞은 말을 쓰시오.<br><br>
+        "그녀는 사람들 말 듣는 것을 잘한다."<br>
+        → She is good ________ ________ to people.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <input class="fill-input" id="u1g6a" placeholder="①" style="width:60px">
+        <input class="fill-input" id="u1g6b" placeholder="②" style="width:90px">
+      </div>
+      <div class="quiz-actions">
+        <button class="btn-check" onclick="checkFillMulti('u1g6',['at','listening'])">확인</button>
+        <button class="btn-reset" onclick="resetFillMulti('u1g6',2)">↺</button>
+      </div>
+      <div class="quiz-feedback" id="u1g6-fb"></div>
+      <div class="quiz-explain">💡 be good at + -ing: "~을 잘하다" → at listening (전치사 뒤 동명사)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤본문이해 -->
+<div class="tab-content" id="u1-t5">
+  <div class="section-card">
+    <div class="section-title">🔍 본문이해 문제</div>
+
+    <!-- TF1 -->
+    <div class="quiz-block" id="u1c1">
+      <div class="q-num">Q1 <span class="q-type">T / F</span></div>
+      <div class="q-text">다음 문장이 본문의 내용과 일치하면 T, 다르면 F를 고르시오.<br><br>
+        "Sleeping well can give you energy for the new school year."</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u1c1',this,true)">T (맞다)</button>
+        <button class="mc-btn" onclick="checkMC('u1c1',this,false)">F (틀리다)</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u1c1')">↺</button></div>
+      <div class="quiz-feedback" id="u1c1-fb"></div>
+      <div class="quiz-explain">💡 본문 첫 단락에서 잘 자는 것이 에너지를 줄 수 있다고 직접 언급함</div>
+    </div>
+
+    <!-- TF2 -->
+    <div class="quiz-block" id="u1c2">
+      <div class="q-num">Q2 <span class="q-type">T / F</span></div>
+      <div class="q-text">다음 문장이 본문의 내용과 일치하면 T, 다르면 F를 고르시오.<br><br>
+        "Chocolate does not contain any caffeine."</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u1c2',this,false)">T (맞다)</button>
+        <button class="mc-btn" onclick="checkMC('u1c2',this,true)">F (틀리다)</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u1c2')">↺</button></div>
+      <div class="quiz-feedback" id="u1c2-fb"></div>
+      <div class="quiz-explain">💡 본문에서 "even chocolate has caffeine"이라고 명시함 → F</div>
+    </div>
+
+    <!-- TF3 -->
+    <div class="quiz-block" id="u1c3">
+      <div class="q-num">Q3 <span class="q-type">T / F</span></div>
+      <div class="q-text">다음 문장이 본문의 내용과 일치하면 T, 다르면 F를 고르시오.<br><br>
+        "You should exercise right before bedtime to sleep well."</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u1c3',this,false)">T (맞다)</button>
+        <button class="mc-btn" onclick="checkMC('u1c3',this,true)">F (틀리다)</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u1c3')">↺</button></div>
+      <div class="quiz-feedback" id="u1c3-fb"></div>
+      <div class="quiz-explain">💡 본문: "Remember to finish exercising a few hours before bedtime." → 잠자리 바로 직전은 금지 → F</div>
+    </div>
+
+    <!-- 내용일치 객관식 1 -->
+    <div class="quiz-block" id="u1c4">
+      <div class="q-num">Q4 <span class="q-type">내용일치</span></div>
+      <div class="q-text">본문에서 "body clock"이 하는 역할로 알맞은 것은?</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u1c4',this,false)">① 음식 소화 시간을 조절한다</button>
+        <button class="mc-btn" onclick="checkMC('u1c4',this,true)">② 언제 자고 일어나야 할지 알려준다</button>
+        <button class="mc-btn" onclick="checkMC('u1c4',this,false)">③ 카페인 섭취량을 조절한다</button>
+        <button class="mc-btn" onclick="checkMC('u1c4',this,false)">④ 운동 시간을 정해준다</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u1c4')">↺</button></div>
+      <div class="quiz-feedback" id="u1c4-fb"></div>
+      <div class="quiz-explain">💡 "The body clock tells you when to wake up and sleep." → ②</div>
+    </div>
+
+    <!-- 내용일치 객관식 2 -->
+    <div class="quiz-block" id="u1c5">
+      <div class="q-num">Q5 <span class="q-type">내용일치</span></div>
+      <div class="q-text">본문에서 스마트폰 사용이 수면에 미치는 영향으로 언급된 것은?</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u1c5',this,false)">① 눈이 피로해진다</button>
+        <button class="mc-btn" onclick="checkMC('u1c5',this,false)">② 몸이 피곤해진다</button>
+        <button class="mc-btn" onclick="checkMC('u1c5',this,true)">③ 뇌가 활성화 상태를 유지한다</button>
+        <button class="mc-btn" onclick="checkMC('u1c5',this,false)">④ 카페인이 분비된다</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u1c5')">↺</button></div>
+      <div class="quiz-feedback" id="u1c5-fb"></div>
+      <div class="quiz-explain">💡 "your brain will stay active" → ③</div>
+    </div>
+
+    <!-- 빈칸완성 -->
+    <div class="quiz-block" id="u1c6">
+      <div class="q-num">Q6 <span class="q-type">빈칸 완성</span></div>
+      <div class="q-text">다음은 본문의 수면 팁을 정리한 것입니다. 빈칸에 알맞은 말을 고르시오.<br><br>
+        "To sleep well, have a ________ sleep pattern."</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u1c6',this,false)">① long</button>
+        <button class="mc-btn" onclick="checkMC('u1c6',this,true)">② regular</button>
+        <button class="mc-btn" onclick="checkMC('u1c6',this,false)">③ short</button>
+        <button class="mc-btn" onclick="checkMC('u1c6',this,false)">④ active</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u1c6')">↺</button></div>
+      <div class="quiz-feedback" id="u1c6-fb"></div>
+      <div class="quiz-explain">💡 본문 소제목: "Have a regular sleep pattern." → ②</div>
+    </div>
+
+    <!-- 요약문 완성 -->
+    <div class="quiz-block" id="u1c7">
+      <div class="q-num">Q7 <span class="q-type">요약문 완성</span></div>
+      <div class="q-text">다음은 본문의 요약입니다. 빈칸에 알맞은 것을 고르시오.<br><br>
+        "This text gives four tips for better sleep: have a regular sleep pattern, avoid ________, exercise during the day, and stop using your smartphone before bed."</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u1c7',this,false)">① sugar</button>
+        <button class="mc-btn" onclick="checkMC('u1c7',this,true)">② caffeine</button>
+        <button class="mc-btn" onclick="checkMC('u1c7',this,false)">③ exercise</button>
+        <button class="mc-btn" onclick="checkMC('u1c7',this,false)">④ naps</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u1c7')">↺</button></div>
+      <div class="quiz-feedback" id="u1c7-fb"></div>
+      <div class="quiz-explain">💡 두 번째 팁: "Be careful about caffeine." → ②</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥서술형 -->
+<div class="tab-content" id="u1-t6">
+  <div class="section-card">
+    <div class="section-title">✍️ 서술형 문제</div>
+
+    <div class="quiz-block">
+      <div class="q-num">서술형 1</div>
+      <div class="q-text"><b>본문에서 제시한 수면에 좋은 습관 4가지를 한국어로 쓰시오.</b><br>
+        <small style="color:#888">조건: 각 습관을 한 문장씩, 총 4문장으로 쓸 것</small></div>
+      <div class="essay-lines"><div></div><div></div><div></div></div>
+      <button class="btn-toggle-ans" onclick="toggleAnswer(this)">📋 모범답안 보기</button>
+      <div class="model-answer">
+        ① 규칙적인 수면 패턴을 유지한다.<br>
+        ② 카페인에 주의한다. (초콜릿, 커피, 에너지 드링크 등)<br>
+        ③ 낮 동안 활동적으로 몸을 움직인다. (운동한다.)<br>
+        ④ 잠자리에 들기 전에 스마트폰 사용을 멈춘다.
+      </div>
+    </div>
+
+    <div class="quiz-block">
+      <div class="q-num">서술형 2</div>
+      <div class="q-text"><b>다음 조건에 맞게 영어 문장을 완성하시오.</b><br>
+        <small style="color:#888">조건: if절을 사용하여 "만약 낮에 운동한다면, 밤에 쉽게 잠들 것이다"라는 내용의 문장을 30단어 내외로 쓸 것</small></div>
+      <div class="essay-lines"><div></div><div></div><div></div></div>
+      <button class="btn-toggle-ans" onclick="toggleAnswer(this)">📋 모범답안 보기</button>
+      <div class="model-answer">
+        If you exercise during the day, your body will feel a little tired, and you will fall asleep easily at night. Remember to finish exercising a few hours before bedtime.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦정답지 -->
+<div class="tab-content" id="u1-t7">
+  <div class="section-card">
+    <div class="section-title">📋 정답지 · 모범답안</div>
+
+    <div class="ans-section">
+      <h3>④ 문법 연습문제 정답</h3>
+      <div class="ans-list">
+        <div class="ans-item"><span class="a-num">Q1</span><span class="a-val">① going ② planning</span></div>
+        <div class="ans-item"><span class="a-num">Q2</span><span class="a-val">④ (진행형 vs 동명사)</span></div>
+        <div class="ans-item"><span class="a-num">Q3</span><span class="a-val">① will use → use (if절에서 will 사용 금지)</span></div>
+        <div class="ans-item"><span class="a-num">Q4</span><span class="a-val">② how</span></div>
+        <div class="ans-item"><span class="a-num">Q5</span><span class="a-val">Sleeping</span></div>
+        <div class="ans-item"><span class="a-num">Q6</span><span class="a-val">① at ② listening</span></div>
+      </div>
+    </div>
+
+    <div class="ans-section">
+      <h3>⑤ 본문이해 문제 정답</h3>
+      <div class="ans-list">
+        <div class="ans-item"><span class="a-num">Q1</span><span class="a-val">T</span></div>
+        <div class="ans-item"><span class="a-num">Q2</span><span class="a-val">F (초콜릿에도 카페인이 있음)</span></div>
+        <div class="ans-item"><span class="a-num">Q3</span><span class="a-val">F (잠자리 바로 전 운동 금지)</span></div>
+        <div class="ans-item"><span class="a-num">Q4</span><span class="a-val">② 언제 자고 일어나야 할지 알려준다</span></div>
+        <div class="ans-item"><span class="a-num">Q5</span><span class="a-val">③ 뇌가 활성화 상태를 유지한다</span></div>
+        <div class="ans-item"><span class="a-num">Q6</span><span class="a-val">② regular</span></div>
+        <div class="ans-item"><span class="a-num">Q7</span><span class="a-val">② caffeine</span></div>
+      </div>
+    </div>
+
+    <div class="ans-section">
+      <h3>⑥ 서술형 모범답안</h3>
+      <div class="ans-list">
+        <div class="ans-item" style="flex-direction:column;gap:4px;">
+          <span class="a-num">서술형 1</span>
+          <span class="a-val">① 규칙적인 수면 패턴을 유지한다. ② 카페인에 주의한다. ③ 낮 동안 활동적으로 운동한다. ④ 잠들기 전 스마트폰 사용을 멈춘다.</span>
+        </div>
+        <div class="ans-item" style="flex-direction:column;gap:4px;">
+          <span class="a-num">서술형 2</span>
+          <span class="a-val">If you exercise during the day, your body will feel a little tired, and you will fall asleep easily at night. Remember to finish exercising a few hours before bedtime.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end u1 -->
+<!-- ══════════════════════════════════════════
+     LESSON 2 · Now One Foot, Now the Other
+══════════════════════════════════════════ -->
+<div class="unit-panel" id="u2">
+<div class="unit-header">
+  <div class="lesson-tag">LESSON 2 · 천재(소영순) 중2</div>
+  <h1>Now One Foot, Now the Other</h1>
+  <div class="meta">한 발씩, 또 한 발씩</div>
+</div>
+
+<!-- 탭 바 -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('u2','t1')">① 본문분석</button>
+  <button class="tab-btn" onclick="showTab('u2','t2')">② 핵심단어·표현</button>
+  <button class="tab-btn" onclick="showTab('u2','t3')">③ 주요문법</button>
+  <button class="tab-btn" onclick="showTab('u2','t4')">④ 문법연습</button>
+  <button class="tab-btn" onclick="showTab('u2','t5')">⑤ 본문이해</button>
+  <button class="tab-btn" onclick="showTab('u2','t6')">⑥ 서술형</button>
+  <button class="tab-btn" onclick="showTab('u2','t7')">⑦ 정답지</button>
+</div>
+
+<!-- ①본문분석 -->
+<div class="tab-content active" id="u2-t1">
+
+  <div class="section-card">
+    <div class="section-title">🗣 대화문 A — Listen and Number</div>
+    <div class="subsection-title">대화 1 · G1 &amp; G2 (자켓)</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">①</span>
+      <div class="sent-en">G1: Jina, is it okay if I wear your brown jacket?</div>
+      <div class="sent-slash">Jina, / is it okay / if I wear / your brown jacket?</div>
+      <div class="sent-kr">지나, / 괜찮니 / 내가 입어도 / 네 갈색 재킷을?</div>
+      <div class="grammar-note"><span class="note-title">◆ Is it okay if ~?</span><br>▶ <span class="note-ex">Is it okay if I wear</span> — "~해도 괜찮니?" 허락을 구하는 표현<br><span class="note-point">★ = Can I ~? / May I ~? 와 같은 의미</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">②</span>
+      <div class="sent-en">G2: My brown jacket? I put it in the washing machine this morning, and it's not dry yet.</div>
+      <div class="sent-slash">My brown jacket? / I put it / in the washing machine / this morning, / and it's not dry yet.</div>
+      <div class="sent-kr">내 갈색 재킷? / 나는 그걸 넣었어 / 세탁기에 / 오늘 아침, / 그래서 아직 안 말랐어.</div>
+      <div class="grammar-note"><span class="note-title">◆ yet (부정문)</span><br>▶ <span class="note-ex">it's not dry yet</span> — "아직 ~하지 않다" (부정문 + yet)<br><span class="note-point">★ yet: 부정문 = 아직, 의문문 = 벌써/이미</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">③</span>
+      <div class="sent-en">G1: Oh, no! I wanted to wear that jacket.</div>
+      <div class="sent-slash">Oh, no! / I wanted / to wear that jacket.</div>
+      <div class="sent-kr">오, 이런! / 나는 원했는데 / 그 재킷을 입기를.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">④</span>
+      <div class="sent-en">G2: Why don't you wear your blue shirt? It's warm today.</div>
+      <div class="sent-slash">Why don't you / wear your blue shirt? / It's warm today.</div>
+      <div class="sent-kr">왜 입지 않니 / 네 파란 셔츠를? / 오늘 따뜻해.</div>
+      <div class="grammar-note"><span class="note-title">◆ Why don't you ~?</span><br>▶ <span class="note-ex">Why don't you wear</span> — "~하는 게 어때?" 제안 표현<br><span class="note-point">★ = How about -ing? / What about -ing?</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑤</span>
+      <div class="sent-en">G1: That's a good idea. Thanks.</div>
+      <div class="sent-slash">That's / a good idea. / Thanks.</div>
+      <div class="sent-kr">좋은 생각이야. / 고마워.</div>
+    </div>
+
+    <div class="subsection-title">대화 2 · B &amp; Mom (야구 경기)</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑥</span>
+      <div class="sent-en">B: Mom, is it okay if I go to see a baseball game this evening?</div>
+      <div class="sent-slash">Mom, / is it okay / if I go to see / a baseball game / this evening?</div>
+      <div class="sent-kr">엄마, / 괜찮아요 / 제가 보러 가도 / 야구 경기를 / 오늘 저녁에?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑦</span>
+      <div class="sent-en">W: I'm afraid you can't. We're going to have dinner with Uncle John today.</div>
+      <div class="sent-slash">I'm afraid / you can't. / We're going to have dinner / with Uncle John / today.</div>
+      <div class="sent-kr">유감이지만 / 안 되겠어. / 우리는 저녁 식사를 할 거야 / 존 삼촌과 / 오늘.</div>
+      <div class="grammar-note"><span class="note-title">◆ I'm afraid ~</span><br>▶ <span class="note-ex">I'm afraid you can't</span> — "유감이지만 ~" 부드럽게 거절·안 좋은 소식 전달<br><span class="note-point">★ 직접 No 대신 예의 바른 거절 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑧</span>
+      <div class="sent-en">B: Oh, is it today? I didn't know that.</div>
+      <div class="sent-slash">Oh, is it today? / I didn't know that.</div>
+      <div class="sent-kr">오, 오늘이에요? / 그걸 몰랐어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑨</span>
+      <div class="sent-en">W: He'll be here at six. How about going to the next game?</div>
+      <div class="sent-slash">He'll be here / at six. / How about / going to the next game?</div>
+      <div class="sent-kr">그는 여기 올 거야 / 6시에. / 어때 / 다음 경기에 가는 게?</div>
+      <div class="grammar-note"><span class="note-title">◆ How about + -ing?</span><br>▶ <span class="note-ex">How about going</span> — "~하는 게 어때?" 제안 표현 (뒤에 동명사)<br><span class="note-point">★ = Why don't you ~? / What about -ing?</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑩</span>
+      <div class="sent-en">B: Sure, I'll check the time of the next game.</div>
+      <div class="sent-slash">Sure, / I'll check / the time of the next game.</div>
+      <div class="sent-kr">그래요, / 확인할게요 / 다음 경기 시간을.</div>
+    </div>
+
+    <div class="subsection-title">대화 3 · Eric &amp; Grandma (런던 여행)</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑪</span>
+      <div class="sent-en">W: Hello, Eric. How are you doing?</div>
+      <div class="sent-slash">Hello, Eric. / How are you doing?</div>
+      <div class="sent-kr">안녕, Eric. / 어떻게 지내니?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑫</span>
+      <div class="sent-en">B: I'm doing okay, thanks. How's your trip to London, Grandma?</div>
+      <div class="sent-slash">I'm doing okay, thanks. / How's your trip / to London, Grandma?</div>
+      <div class="sent-kr">잘 지내요, 감사해요. / 런던 여행은 어때요, 할머니?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑬</span>
+      <div class="sent-en">W: It's great. I went to Big Ben and had a meat pie yesterday.</div>
+      <div class="sent-slash">It's great. / I went to Big Ben / and had a meat pie / yesterday.</div>
+      <div class="sent-kr">훌륭해. / 나는 빅벤에 갔고 / 고기 파이를 먹었어 / 어제.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑭</span>
+      <div class="sent-en">B: Wow! You're having a great time there. By the way, what time is it in London now?</div>
+      <div class="sent-slash">Wow! / You're having a great time / there. / By the way, / what time is it / in London now?</div>
+      <div class="sent-kr">와! / 거기서 즐거운 시간 보내고 있군요. / 그런데, / 몇 시예요 / 지금 런던은?</div>
+      <div class="grammar-note"><span class="note-title">◆ By the way</span><br>▶ <span class="note-ex">By the way, what time is it</span> — "그런데, 참고로" 화제를 바꿀 때 사용<br><span class="note-point">★ 대화 중 새 주제로 자연스럽게 넘어가는 연결 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑮</span>
+      <div class="sent-en">W: It's a quarter past six in the morning.</div>
+      <div class="sent-slash">It's / a quarter past six / in the morning.</div>
+      <div class="sent-kr">오전 / 6시 15분이야.</div>
+      <div class="grammar-note"><span class="note-title">◆ 시각 표현 — past / to</span><br>▶ <span class="note-ex">a quarter past six</span> — 6시 15분 (past = ~분 지남)<br><span class="note-point">★ a quarter = 15분 / half = 30분 / to = ~분 전</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑯</span>
+      <div class="sent-en">B: Oh, you woke up early! I hope you have a wonderful vacation there.</div>
+      <div class="sent-slash">Oh, you woke up early! / I hope / you have / a wonderful vacation there.</div>
+      <div class="sent-kr">오, 일찍 일어나셨네요! / 바라요 / 누리시길 / 거기서 멋진 휴가를.</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-title">🗣 대화문 B — In Everyday Life (Subin &amp; Dad)</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">①</span>
+      <div class="sent-en">Subin: Dad, is it okay if I use the oven to bake some cookies?</div>
+      <div class="sent-slash">Dad, / is it okay / if I use the oven / to bake some cookies?</div>
+      <div class="sent-kr">아빠, / 괜찮아요 / 제가 오븐을 사용해도 / 쿠키를 굽기 위해서?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">②</span>
+      <div class="sent-en">Dad: Sure, you can, Subin. What are they for?</div>
+      <div class="sent-slash">Sure, you can, Subin. / What are they for?</div>
+      <div class="sent-kr">물론, 돼, Subin. / 그것들은 무엇을 위한 거야?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">③</span>
+      <div class="sent-en">Subin: Today is Kate's birthday, so I want to bake them for her.</div>
+      <div class="sent-slash">Today is Kate's birthday, / so I want to bake them / for her.</div>
+      <div class="sent-kr">오늘이 Kate의 생일이에요, / 그래서 저는 구워주고 싶어요 / 그녀를 위해.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">④</span>
+      <div class="sent-en">Dad: That's very nice of you. What time is it now?</div>
+      <div class="sent-slash">That's very nice of you. / What time is it now?</div>
+      <div class="sent-kr">정말 친절하구나. / 지금 몇 시야?</div>
+      <div class="grammar-note"><span class="note-title">◆ It's very nice of you.</span><br>▶ <span class="note-ex">That's very nice of you</span> — "정말 친절/착하구나"는 칭찬 표현<br><span class="note-point">★ It's + 형용사 + of + 목적격 + to부정사 구조의 축약형</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑤</span>
+      <div class="sent-en">Subin: It's a quarter past two.</div>
+      <div class="sent-slash">It's / a quarter past two.</div>
+      <div class="sent-kr">2시 15분이에요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑥</span>
+      <div class="sent-en">Dad: I have an online meeting at 4, so I can help you now.</div>
+      <div class="sent-slash">I have an online meeting / at 4, / so I can help you now.</div>
+      <div class="sent-kr">4시에 온라인 미팅이 있어, / 그래서 지금 도와줄 수 있어.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑦</span>
+      <div class="sent-en">Subin: What kind of cookies are you going to bake?</div>
+      <div class="sent-slash">What kind of cookies / are you going to bake?</div>
+      <div class="sent-kr">어떤 종류의 쿠키를 / 구울 예정이야?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑧</span>
+      <div class="sent-en">Subin: Cheese cookies. Kate loves them.</div>
+      <div class="sent-slash">Cheese cookies. / Kate loves them.</div>
+      <div class="sent-kr">치즈 쿠키요. / Kate가 그것들을 좋아해요.</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-title">🗣 대화문 A — Watch and Order (Tim at Adventure Land)</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">①</span>
+      <div class="sent-en">Hey, I'm Tim. Where am I?</div>
+      <div class="sent-slash">Hey, I'm Tim. / Where am I?</div>
+      <div class="sent-kr">안녕, 나는 Tim이야. / 나는 어디에 있지?</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">②</span>
+      <div class="sent-en">I'm at Adventure Land with my dad!</div>
+      <div class="sent-slash">I'm at Adventure Land / with my dad!</div>
+      <div class="sent-kr">나는 Adventure Land에 있어 / 아빠와 함께!</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">③</span>
+      <div class="sent-en">We're going to have fun here. It's ten o'clock.</div>
+      <div class="sent-slash">We're going to have fun / here. / It's ten o'clock.</div>
+      <div class="sent-kr">우리는 즐거운 시간을 보낼 거야 / 여기서. / 10시야.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">④</span>
+      <div class="sent-en">We are standing in line to ride a roller coaster. I'm so excited!</div>
+      <div class="sent-slash">We are standing in line / to ride a roller coaster. / I'm so excited!</div>
+      <div class="sent-kr">우리는 줄 서 있어 / 롤러코스터를 타기 위해. / 너무 신나!</div>
+      <div class="grammar-note"><span class="note-title">◆ stand in line</span><br>▶ <span class="note-ex">standing in line</span> — "줄을 서다" (= wait in line)<br><span class="note-point">★ to ride = 목적 표현 to부정사 "타기 위해"</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑤</span>
+      <div class="sent-en">It's already half past ten.</div>
+      <div class="sent-slash">It's already / half past ten.</div>
+      <div class="sent-kr">벌써 / 10시 30분이야.</div>
+      <div class="grammar-note"><span class="note-title">◆ half past ~</span><br>▶ <span class="note-ex">half past ten</span> — "10시 반" (= ten thirty)<br><span class="note-point">★ half = 30분 / past = ~분 지남</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑥</span>
+      <div class="sent-en">We'll ride the roller coaster. Let's go! Ahhhh! I'm back!</div>
+      <div class="sent-slash">We'll ride the roller coaster. / Let's go! / I'm back!</div>
+      <div class="sent-kr">우리는 롤러코스터를 탈 거야. / 가자! / 다녀왔어!</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑦</span>
+      <div class="sent-en">We're going to have lunch. Everything looks delicious!</div>
+      <div class="sent-slash">We're going to have lunch. / Everything looks delicious!</div>
+      <div class="sent-kr">우리는 점심을 먹을 거야. / 모든 것이 맛있어 보여!</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑧</span>
+      <div class="sent-en">I'll have spaghetti. I'll be back soon.</div>
+      <div class="sent-slash">I'll have spaghetti. / I'll be back soon.</div>
+      <div class="sent-kr">나는 스파게티를 먹을 거야. / 곧 돌아올게.</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-title">📖 본문 — Now One Foot, Now the Other</div>
+
+    <div class="sentence-block">
+      <span class="sent-num">①</span>
+      <div class="sent-en">Bobby got his name from his grandfather, Bob.</div>
+      <div class="sent-slash">Bobby got his name / from his grandfather, / Bob.</div>
+      <div class="sent-kr">Bobby는 이름을 얻었어요 / 그의 할아버지에게서, / Bob.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">②</span>
+      <div class="sent-en">Bob was his best friend.</div>
+      <div class="sent-slash">Bob was / his best friend.</div>
+      <div class="sent-kr">Bob은 / 그의 가장 친한 친구였어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">③</span>
+      <div class="sent-en">Bob was the person who taught Bobby how to walk.</div>
+      <div class="sent-slash">Bob was / the person / who taught Bobby / how to walk.</div>
+      <div class="sent-kr">Bob은 / 사람이었어요 / Bobby에게 가르쳐 준 / 걷는 방법을.</div>
+      <div class="grammar-note"><span class="note-title">◆ 주격 관계대명사 who</span><br>▶ <span class="note-ex">the person who taught Bobby</span> — 선행사(the person)를 수식하는 who절<br><span class="note-point">★ who = 사람을 가리키는 관계대명사, 앞 명사를 뒤에서 설명</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">④</span>
+      <div class="sent-en">"Hold my hands, Bobby," Bob said.</div>
+      <div class="sent-slash">"Hold my hands, Bobby," / Bob said.</div>
+      <div class="sent-kr">"내 손을 잡아, Bobby," / Bob이 말했어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑤</span>
+      <div class="sent-en">"Now one foot, now the other."</div>
+      <div class="sent-slash">"Now one foot, / now the other."</div>
+      <div class="sent-kr">"이제 한 발, / 이제 다른 발."</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑥</span>
+      <div class="sent-en">Bob and Bobby often played with old wooden blocks.</div>
+      <div class="sent-slash">Bob and Bobby / often played / with old wooden blocks.</div>
+      <div class="sent-kr">Bob과 Bobby는 / 자주 놀았어요 / 오래된 나무 블록으로.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑦</span>
+      <div class="sent-en">They slowly piled the blocks one by one to build a tower.</div>
+      <div class="sent-slash">They slowly piled / the blocks / one by one / to build a tower.</div>
+      <div class="sent-kr">그들은 천천히 쌓았어요 / 블록들을 / 하나씩 / 탑을 세우기 위해.</div>
+      <div class="grammar-note"><span class="note-title">◆ one by one</span><br>▶ <span class="note-ex">piled the blocks one by one</span> — "하나씩, 차례차례" 부사적 표현<br><span class="note-point">★ to build a tower = 목적 표현 (탑을 세우기 위해)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑧</span>
+      <div class="sent-en">"There is one more block to put," Bob said.</div>
+      <div class="sent-slash">"There is / one more block / to put," / Bob said.</div>
+      <div class="sent-kr">"하나 더 있어 / 블록이 / 놓을," / Bob이 말했어요.</div>
+      <div class="grammar-note"><span class="note-title">◆ to부정사 형용사적 용법</span><br>▶ <span class="note-ex">one more block to put</span> — "놓을 블록 하나 더" (명사 수식)<br><span class="note-point">★ to부정사가 앞의 명사(block)를 뒤에서 수식</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑨</span>
+      <div class="sent-en">"And that's the elephant block," Bobby said.</div>
+      <div class="sent-slash">"And that's / the elephant block," / Bobby said.</div>
+      <div class="sent-kr">"그리고 저것이 / 코끼리 블록이야," / Bobby가 말했어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑩</span>
+      <div class="sent-en">Bobby carefully put the elephant block on the top.</div>
+      <div class="sent-slash">Bobby carefully put / the elephant block / on the top.</div>
+      <div class="sent-kr">Bobby는 조심스럽게 올렸어요 / 코끼리 블록을 / 맨 위에.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑪</span>
+      <div class="sent-en">But Bob sneezed, and the tower fell.</div>
+      <div class="sent-slash">But Bob sneezed, / and the tower fell.</div>
+      <div class="sent-kr">그런데 Bob이 재채기를 했고, / 탑이 무너졌어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑫</span>
+      <div class="sent-en">Bobby laughed and laughed.</div>
+      <div class="sent-slash">Bobby laughed / and laughed.</div>
+      <div class="sent-kr">Bobby는 웃고 / 또 웃었어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑬</span>
+      <div class="sent-en">Bobby said, "You always sneeze when the elephant block appears."</div>
+      <div class="sent-slash">Bobby said, / "You always sneeze / when the elephant block appears."</div>
+      <div class="sent-kr">Bobby가 말했어요, / "당신은 항상 재채기를 해요 / 코끼리 블록이 나타날 때."</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑭</span>
+      <div class="sent-en">Time passed. One day, Bobby's dad looked very sad.</div>
+      <div class="sent-slash">Time passed. / One day, / Bobby's dad / looked very sad.</div>
+      <div class="sent-kr">시간이 흘렀어요. / 어느 날, / Bobby의 아빠가 / 매우 슬퍼 보였어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑮</span>
+      <div class="sent-en">He told Bobby, "Bob fell ill. He is in a hospital which is far from here."</div>
+      <div class="sent-slash">He told Bobby, / "Bob fell ill. / He is in a hospital / which is far from here."</div>
+      <div class="sent-kr">그가 Bobby에게 말했어요, / "Bob이 병에 걸렸어. / 그는 병원에 있어 / 여기서 멀리 있는."</div>
+      <div class="grammar-note"><span class="note-title">◆ 목적격 관계대명사 which</span><br>▶ <span class="note-ex">a hospital which is far from here</span> — 선행사(a hospital)를 수식하는 which절<br><span class="note-point">★ which = 사물을 가리키는 관계대명사 (= that으로 대체 가능)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑯</span>
+      <div class="sent-en">"I want to see him," Bobby said.</div>
+      <div class="sent-slash">"I want to see him," / Bobby said.</div>
+      <div class="sent-kr">"나는 그를 보고 싶어요," / Bobby가 말했어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑰</span>
+      <div class="sent-en">"You can't, Bobby," Mom told him. "He can't move his arms and legs, and he can't talk."</div>
+      <div class="sent-slash">"You can't, Bobby," / Mom told him. / "He can't move / his arms and legs, / and he can't talk."</div>
+      <div class="sent-kr">"안 돼, Bobby," / 엄마가 말했어요. / "그는 움직일 수 없어 / 팔과 다리를, / 그리고 말할 수도 없어."</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑱</span>
+      <div class="sent-en">"We'll just have to wait and hope that he will get better."</div>
+      <div class="sent-slash">"We'll just have / to wait and hope / that he will get better."</div>
+      <div class="sent-kr">"우리는 그냥 해야 해 / 기다리고 바라는 것을 / 그가 좋아질 것이라고."</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑲</span>
+      <div class="sent-en">Bob came back home after a few months.</div>
+      <div class="sent-slash">Bob came back home / after a few months.</div>
+      <div class="sent-kr">Bob은 집에 돌아왔어요 / 몇 달 후에.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">⑳</span>
+      <div class="sent-en">He just lay in bed without talking or moving.</div>
+      <div class="sent-slash">He just lay in bed / without talking or moving.</div>
+      <div class="sent-kr">그는 그냥 침대에 누워 있었어요 / 말하거나 움직이지 않은 채로.</div>
+      <div class="grammar-note"><span class="note-title">◆ without + -ing</span><br>▶ <span class="note-ex">without talking or moving</span> — "~하지 않은 채로" (전치사 without 뒤 동명사)<br><span class="note-point">★ without = 전치사 → 뒤에 반드시 동명사</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉑</span>
+      <div class="sent-en">After a while, Bobby came into Bob's room with the blocks.</div>
+      <div class="sent-slash">After a while, / Bobby came into Bob's room / with the blocks.</div>
+      <div class="sent-kr">잠시 후, / Bobby가 Bob의 방으로 들어왔어요 / 블록을 가지고.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉒</span>
+      <div class="sent-en">"Bob, it's time to build a tower!"</div>
+      <div class="sent-slash">"Bob, / it's time / to build a tower!"</div>
+      <div class="sent-kr">"Bob, / 이제 시간이에요 / 탑을 쌓을."</div>
+      <div class="grammar-note"><span class="note-title">◆ It's time to + 동사원형</span><br>▶ <span class="note-ex">it's time to build</span> — "~할 시간이다"<br><span class="note-point">★ time 뒤의 to부정사는 형용사적 용법 (time을 수식)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉓</span>
+      <div class="sent-en">Bob's mouth made a small smile.</div>
+      <div class="sent-slash">Bob's mouth / made a small smile.</div>
+      <div class="sent-kr">Bob의 입이 / 작은 미소를 지었어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉔</span>
+      <div class="sent-en">Bobby began to build the tower.</div>
+      <div class="sent-slash">Bobby began / to build the tower.</div>
+      <div class="sent-kr">Bobby는 시작했어요 / 탑을 쌓기.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉕</span>
+      <div class="sent-en">"Okay, Bob, now the elephant block."</div>
+      <div class="sent-slash">"Okay, Bob, / now the elephant block."</div>
+      <div class="sent-kr">"좋아요, Bob, / 이제 코끼리 블록이에요."</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉖</span>
+      <div class="sent-en">Suddenly, Bob made a small sound like sneezing.</div>
+      <div class="sent-slash">Suddenly, / Bob made / a small sound / like sneezing.</div>
+      <div class="sent-kr">갑자기, / Bob이 냈어요 / 작은 소리를 / 재채기 같은.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉗</span>
+      <div class="sent-en">At that moment, Bobby realized that Bob would recover soon.</div>
+      <div class="sent-slash">At that moment, / Bobby realized / that Bob would recover / soon.</div>
+      <div class="sent-kr">그 순간, / Bobby는 깨달았어요 / Bob이 회복할 것이라는 것을 / 곧.</div>
+      <div class="grammar-note"><span class="note-title">◆ realized that + 절</span><br>▶ <span class="note-ex">realized that Bob would recover</span> — "~라는 것을 깨달았다" (that절 = 목적어)<br><span class="note-point">★ 동사 realize, know, think 뒤 that절은 목적어 역할</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉘</span>
+      <div class="sent-en">And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.</div>
+      <div class="sent-slash">And Bob did. / Slowly, / Bob began / to talk a little / and move his fingers. / But he still couldn't walk.</div>
+      <div class="sent-kr">그리고 Bob은 그랬어요. / 서서히, / Bob은 시작했어요 / 조금씩 말하기 / 그리고 손가락 움직이기. / 하지만 여전히 걸을 수 없었어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉙</span>
+      <div class="sent-en">When the weather got nice and warm, Bob and Bobby sat side by side.</div>
+      <div class="sent-slash">When the weather got / nice and warm, / Bob and Bobby / sat side by side.</div>
+      <div class="sent-kr">날씨가 좋고 따뜻해졌을 때, / Bob과 Bobby는 / 나란히 앉았어요.</div>
+      <div class="grammar-note"><span class="note-title">◆ side by side</span><br>▶ <span class="note-ex">sat side by side</span> — "나란히, 옆에 나란히" 부사적 표현<br><span class="note-point">★ when절 = 시간 부사절 "~할 때"</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉚</span>
+      <div class="sent-en">The summer breeze with the smell of happiness was blowing.</div>
+      <div class="sent-slash">The summer breeze / with the smell of happiness / was blowing.</div>
+      <div class="sent-kr">여름 바람이 / 행복의 냄새와 함께 / 불고 있었어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉛</span>
+      <div class="sent-en">"You taught me how to walk. Do you remember?" Bobby said.</div>
+      <div class="sent-slash">"You taught me / how to walk. / Do you remember?" / Bobby said.</div>
+      <div class="sent-kr">"당신은 나에게 가르쳐 줬어요 / 걷는 방법을. / 기억해요?" / Bobby가 말했어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉜</span>
+      <div class="sent-en">Then, Bob stood up very slowly.</div>
+      <div class="sent-slash">Then, / Bob stood up / very slowly.</div>
+      <div class="sent-kr">그러자, / Bob이 일어섰어요 / 아주 천천히.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉝</span>
+      <div class="sent-en">Bobby smiled and stood in front of Bob.</div>
+      <div class="sent-slash">Bobby smiled / and stood in front of Bob.</div>
+      <div class="sent-kr">Bobby는 미소 지으며 / Bob 앞에 섰어요.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉞</span>
+      <div class="sent-en">Bob leaned on Bobby's shoulders.</div>
+      <div class="sent-slash">Bob leaned / on Bobby's shoulders.</div>
+      <div class="sent-kr">Bob은 기댔어요 / Bobby의 어깨에.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㉟</span>
+      <div class="sent-en">Bobby said, "When I was little, you held my hands and said these words."</div>
+      <div class="sent-slash">Bobby said, / "When I was little, / you held my hands / and said these words."</div>
+      <div class="sent-kr">Bobby가 말했어요, / "제가 어렸을 때, / 당신은 제 손을 잡고 / 이 말을 했어요."</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㊱</span>
+      <div class="sent-en">And Bobby added, "Now one foot."</div>
+      <div class="sent-slash">And Bobby added, / "Now one foot."</div>
+      <div class="sent-kr">그리고 Bobby가 덧붙였어요, / "이제 한 발."</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㊲</span>
+      <div class="sent-en">Like magic, Bob moved one foot.</div>
+      <div class="sent-slash">Like magic, / Bob moved / one foot.</div>
+      <div class="sent-kr">마치 마법처럼, / Bob이 움직였어요 / 한 발을.</div>
+    </div>
+
+    <div class="sentence-block">
+      <span class="sent-num">㊳</span>
+      <div class="sent-en">"Now the other." And Bob moved the other.</div>
+      <div class="sent-slash">"Now the other." / And Bob moved / the other.</div>
+      <div class="sent-kr">"이제 다른 발." / 그리고 Bob이 움직였어요 / 다른 발을.</div>
+    </div>
+  </div>
+</div><!-- end t1 -->
+
+<!-- ②핵심단어·표현 -->
+<div class="tab-content" id="u2-t2">
+  <div class="section-card">
+    <div class="section-title">📚 핵심 어휘</div>
+    <table class="word-table">
+      <tr><th>단어</th><th>뜻</th><th>품사</th><th>예문</th></tr>
+      <tr><td class="w-word">grandfather</td><td>할아버지</td><td><span class="w-pos">명</span></td><td>My grandfather is 75 years old.</td></tr>
+      <tr><td class="w-word">wooden</td><td>나무로 만든</td><td><span class="w-pos">형</span></td><td>They built a wooden house.</td></tr>
+      <tr><td class="w-word">pile</td><td>쌓다; 더미</td><td><span class="w-pos">동/명</span></td><td>She piled the books on the desk.</td></tr>
+      <tr><td class="w-word">sneeze</td><td>재채기하다</td><td><span class="w-pos">동</span></td><td>He sneezed loudly.</td></tr>
+      <tr><td class="w-word">appear</td><td>나타나다</td><td><span class="w-pos">동</span></td><td>A star appeared in the sky.</td></tr>
+      <tr><td class="w-word">ill</td><td>아픈, 병든</td><td><span class="w-pos">형</span></td><td>She fell ill last winter.</td></tr>
+      <tr><td class="w-word">recover</td><td>회복하다</td><td><span class="w-pos">동</span></td><td>He slowly recovered from the cold.</td></tr>
+      <tr><td class="w-word">realize</td><td>깨닫다</td><td><span class="w-pos">동</span></td><td>I realized that I was wrong.</td></tr>
+      <tr><td class="w-word">lean</td><td>기대다</td><td><span class="w-pos">동</span></td><td>She leaned on the wall.</td></tr>
+      <tr><td class="w-word">breeze</td><td>산들바람</td><td><span class="w-pos">명</span></td><td>A cool breeze was blowing.</td></tr>
+      <tr><td class="w-word">shoulder</td><td>어깨</td><td><span class="w-pos">명</span></td><td>He put his hand on my shoulder.</td></tr>
+      <tr><td class="w-word">carefully</td><td>조심스럽게</td><td><span class="w-pos">부</span></td><td>She carefully placed the vase.</td></tr>
+    </table>
+  </div>
+  <div class="section-card">
+    <div class="section-title">💬 주요 표현·숙어</div>
+    <table class="expr-table">
+      <tr><th>표현</th><th>뜻</th><th>사용 예</th></tr>
+      <tr><td class="e-expr">Is it okay if ~?</td><td>~해도 괜찮니?</td><td>Is it okay if I open the window?</td></tr>
+      <tr><td class="e-expr">I'm afraid ~</td><td>유감이지만 ~</td><td>I'm afraid I can't help you.</td></tr>
+      <tr><td class="e-expr">How about -ing?</td><td>~하는 게 어때?</td><td>How about going for a walk?</td></tr>
+      <tr><td class="e-expr">one by one</td><td>하나씩, 차례로</td><td>They left the room one by one.</td></tr>
+      <tr><td class="e-expr">fall ill</td><td>병에 걸리다</td><td>He fell ill after the trip.</td></tr>
+      <tr><td class="e-expr">side by side</td><td>나란히</td><td>They walked side by side.</td></tr>
+      <tr><td class="e-expr">like magic</td><td>마치 마법처럼</td><td>Like magic, the pain disappeared.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ③주요문법 -->
+<div class="tab-content" id="u2-t3">
+  <div class="section-card">
+    <div class="section-title">📐 주요 문법 정리</div>
+
+    <div class="grammar-card">
+      <h3>① 주격 관계대명사 who / which</h3>
+      <div class="g-rule">
+        <b>형태:</b> 선행사(사람) + who + 동사 / 선행사(사물) + which + 동사<br>
+        <b>의미:</b> "~하는 (명사)" — 관계대명사절이 앞의 명사(선행사)를 수식함<br>
+        <b>특징:</b> who = 사람 선행사, which = 사물 선행사, that = 둘 다 대체 가능
+      </div>
+      <div class="g-from">📖 본문: <span>"Bob was the person who taught Bobby how to walk." / "He is in a hospital which is far from here."</span></div>
+      <div class="g-ex">➕ 추가 예문 1: She is the girl who won the first prize.<br>➕ 추가 예문 2: This is the book which made me cry.</div>
+    </div>
+
+    <div class="grammar-card">
+      <h3>② Is it okay if ~? — 허락 구하기</h3>
+      <div class="g-rule">
+        <b>형태:</b> Is it okay if + 주어 + 동사원형(현재시제)?<br>
+        <b>의미:</b> "~해도 괜찮니?" — 상대방에게 허락을 구하는 정중한 표현<br>
+        <b>유사표현:</b> Can I ~? / May I ~? / Do you mind if I ~?
+      </div>
+      <div class="g-from">📖 본문: <span>"Is it okay if I wear your brown jacket?" / "Is it okay if I use the oven to bake some cookies?"</span></div>
+      <div class="g-ex">➕ 추가 예문 1: Is it okay if I turn on the TV?<br>➕ 추가 예문 2: Is it okay if I sit here?</div>
+    </div>
+
+    <div class="grammar-card">
+      <h3>③ 시각 표현 — past / to / half / quarter</h3>
+      <div class="g-rule">
+        <b>형태:</b> (분) + past/to + (시) 또는 (시) + (분)<br>
+        <b>의미:</b><br>
+        · a quarter past six = 6시 15분<br>
+        · half past two = 2시 30분<br>
+        · a quarter to seven = 6시 45분<br>
+        · ten o'clock = 10시 정각
+      </div>
+      <div class="g-from">📖 본문: <span>"It's a quarter past six in the morning." / "It's a quarter past two." / "It's already half past ten."</span></div>
+      <div class="g-ex">➕ 추가 예문 1: The meeting starts at half past three. (3시 30분)<br>➕ 추가 예문 2: It's a quarter to eight. (7시 45분)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ④문법연습 -->
+<div class="tab-content" id="u2-t4">
+  <div class="section-card">
+    <div class="section-title">✏️ 문법 연습문제</div>
+
+    <!-- Q1 빈칸채우기 -->
+    <div class="quiz-block" id="u2g1">
+      <div class="q-num">Q1 <span class="q-type">빈칸 채우기</span></div>
+      <div class="q-text">다음 빈칸에 who 또는 which를 쓰시오.<br><br>
+        ① Bob was the person ________ taught Bobby how to walk.<br>
+        ② He is in a hospital ________ is far from here.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <input class="fill-input" id="u2g1a" placeholder="①" style="width:80px">
+        <input class="fill-input" id="u2g1b" placeholder="②" style="width:80px">
+      </div>
+      <div class="quiz-actions">
+        <button class="btn-check" onclick="checkFillMulti('u2g1',['who','which'])">확인</button>
+        <button class="btn-reset" onclick="resetFillMulti('u2g1',2)">↺</button>
+      </div>
+      <div class="quiz-feedback" id="u2g1-fb"></div>
+      <div class="quiz-explain">💡 ① person(사람) → who / ② hospital(사물) → which</div>
+    </div>
+
+    <!-- Q2 선다형 (시각) -->
+    <div class="quiz-block" id="u2g2">
+      <div class="q-num">Q2 <span class="q-type">선다형</span></div>
+      <div class="q-text">다음 중 "2시 30분"을 영어로 올바르게 표현한 것은?</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u2g2',this,false)">① a quarter past two</button>
+        <button class="mc-btn" onclick="checkMC('u2g2',this,true)">② half past two</button>
+        <button class="mc-btn" onclick="checkMC('u2g2',this,false)">③ a quarter to two</button>
+        <button class="mc-btn" onclick="checkMC('u2g2',this,false)">④ half to two</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u2g2')">↺</button></div>
+      <div class="quiz-feedback" id="u2g2-fb"></div>
+      <div class="quiz-explain">💡 half past = ~시 30분, a quarter past = ~시 15분, a quarter to = ~시 45분</div>
+    </div>
+
+    <!-- Q3 틀린 곳 고치기 -->
+    <div class="quiz-block" id="u2g3">
+      <div class="q-num">Q3 <span class="q-type">틀린 곳 고치기</span></div>
+      <div class="q-text">밑줄 친 부분 중 틀린 것을 고르시오.<br><br>
+        She is ①<u>the girl</u> ②<u>which</u> ③<u>won</u> ④<u>the first prize</u>.</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u2g3',this,false)">① the girl</button>
+        <button class="mc-btn" onclick="checkMC('u2g3',this,true)">② which → who</button>
+        <button class="mc-btn" onclick="checkMC('u2g3',this,false)">③ won</button>
+        <button class="mc-btn" onclick="checkMC('u2g3',this,false)">④ the first prize</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u2g3')">↺</button></div>
+      <div class="quiz-feedback" id="u2g3-fb"></div>
+      <div class="quiz-explain">💡 선행사 the girl이 사람 → 관계대명사 who 사용 (which는 사물에 사용)</div>
+    </div>
+
+    <!-- Q4 빈칸채우기 (Is it okay if) -->
+    <div class="quiz-block" id="u2g4">
+      <div class="q-num">Q4 <span class="q-type">빈칸 채우기</span></div>
+      <div class="q-text">다음 우리말을 영어로 완성하시오.<br><br>
+        "내가 창문을 열어도 괜찮니?"<br>
+        → ________ it okay ________ I open the window?</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <input class="fill-input" id="u2g4a" placeholder="①" style="width:60px">
+        <input class="fill-input" id="u2g4b" placeholder="②" style="width:50px">
+      </div>
+      <div class="quiz-actions">
+        <button class="btn-check" onclick="checkFillMulti('u2g4',['Is','if'])">확인</button>
+        <button class="btn-reset" onclick="resetFillMulti('u2g4',2)">↺</button>
+      </div>
+      <div class="quiz-feedback" id="u2g4-fb"></div>
+      <div class="quiz-explain">💡 허락 구하기: Is it okay if + 주어 + 동사? 구조</div>
+    </div>
+
+    <!-- Q5 선다형 (관계대명사) -->
+    <div class="quiz-block" id="u2g5">
+      <div class="q-num">Q5 <span class="q-type">선다형</span></div>
+      <div class="q-text">다음 빈칸에 가장 알맞은 것은?<br><br>
+        This is the book ________ made me cry.</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u2g5',this,false)">① who</button>
+        <button class="mc-btn" onclick="checkMC('u2g5',this,true)">② which</button>
+        <button class="mc-btn" onclick="checkMC('u2g5',this,false)">③ whom</button>
+        <button class="mc-btn" onclick="checkMC('u2g5',this,false)">④ whose</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u2g5')">↺</button></div>
+      <div class="quiz-feedback" id="u2g5-fb"></div>
+      <div class="quiz-explain">💡 선행사 book(사물) → 관계대명사 which (또는 that)</div>
+    </div>
+
+    <!-- Q6 문장완성 -->
+    <div class="quiz-block" id="u2g6">
+      <div class="q-num">Q6 <span class="q-type">문장 완성하기</span></div>
+      <div class="q-text">다음 우리말과 같도록 빈칸을 채우시오.<br><br>
+        "6시 45분이야." → It's a quarter ________ ________.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <input class="fill-input" id="u2g6a" placeholder="①" style="width:50px">
+        <input class="fill-input" id="u2g6b" placeholder="②" style="width:70px">
+      </div>
+      <div class="quiz-actions">
+        <button class="btn-check" onclick="checkFillMulti('u2g6',['to','seven'])">확인</button>
+        <button class="btn-reset" onclick="resetFillMulti('u2g6',2)">↺</button>
+      </div>
+      <div class="quiz-feedback" id="u2g6-fb"></div>
+      <div class="quiz-explain">💡 ~시 45분 = a quarter to ~(다음 시간). 6시 45분 = a quarter to seven</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤본문이해 -->
+<div class="tab-content" id="u2-t5">
+  <div class="section-card">
+    <div class="section-title">🔍 본문이해 문제</div>
+
+    <div class="quiz-block" id="u2c1">
+      <div class="q-num">Q1 <span class="q-type">T / F</span></div>
+      <div class="q-text">Bobby는 할아버지 Bob에게서 이름을 얻었다.</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u2c1',this,true)">T (맞다)</button>
+        <button class="mc-btn" onclick="checkMC('u2c1',this,false)">F (틀리다)</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u2c1')">↺</button></div>
+      <div class="quiz-feedback" id="u2c1-fb"></div>
+      <div class="quiz-explain">💡 "Bobby got his name from his grandfather, Bob." → T</div>
+    </div>
+
+    <div class="quiz-block" id="u2c2">
+      <div class="q-num">Q2 <span class="q-type">T / F</span></div>
+      <div class="q-text">Bob이 병원에 있는 동안 Bobby는 매일 병문안을 갔다.</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u2c2',this,false)">T (맞다)</button>
+        <button class="mc-btn" onclick="checkMC('u2c2',this,true)">F (틀리다)</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u2c2')">↺</button></div>
+      <div class="quiz-feedback" id="u2c2-fb"></div>
+      <div class="quiz-explain">💡 엄마가 "You can't, Bobby"라고 하며 병문안을 막았음 → F</div>
+    </div>
+
+    <div class="quiz-block" id="u2c3">
+      <div class="q-num">Q3 <span class="q-type">T / F</span></div>
+      <div class="q-text">Bobby는 Bob이 회복할 것을 재채기 소리를 듣고 깨달았다.</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u2c3',this,true)">T (맞다)</button>
+        <button class="mc-btn" onclick="checkMC('u2c3',this,false)">F (틀리다)</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u2c3')">↺</button></div>
+      <div class="quiz-feedback" id="u2c3-fb"></div>
+      <div class="quiz-explain">💡 "Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon." → T</div>
+    </div>
+
+    <div class="quiz-block" id="u2c4">
+      <div class="q-num">Q4 <span class="q-type">내용일치</span></div>
+      <div class="q-text">Bob이 병원에서 돌아왔을 때의 상태로 알맞은 것은?</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u2c4',this,false)">① 바로 걷기 시작했다</button>
+        <button class="mc-btn" onclick="checkMC('u2c4',this,false)">② 큰 소리로 웃었다</button>
+        <button class="mc-btn" onclick="checkMC('u2c4',this,true)">③ 말도 못 하고 움직이지도 못하며 침대에 누워 있었다</button>
+        <button class="mc-btn" onclick="checkMC('u2c4',this,false)">④ Bobby와 블록 놀이를 했다</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u2c4')">↺</button></div>
+      <div class="quiz-feedback" id="u2c4-fb"></div>
+      <div class="quiz-explain">💡 "He just lay in bed without talking or moving." → ③</div>
+    </div>
+
+    <div class="quiz-block" id="u2c5">
+      <div class="q-num">Q5 <span class="q-type">내용일치</span></div>
+      <div class="q-text">이야기의 마지막 장면에서 Bobby가 한 행동으로 알맞은 것은?</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u2c5',this,false)">① Bob의 손을 잡아 주었다</button>
+        <button class="mc-btn" onclick="checkMC('u2c5',this,true)">② Bob 앞에 서서 한 발씩 내딛도록 말해주었다</button>
+        <button class="mc-btn" onclick="checkMC('u2c5',this,false)">③ 블록으로 탑을 쌓았다</button>
+        <button class="mc-btn" onclick="checkMC('u2c5',this,false)">④ 재채기를 했다</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u2c5')">↺</button></div>
+      <div class="quiz-feedback" id="u2c5-fb"></div>
+      <div class="quiz-explain">💡 Bobby stood in front of Bob and said "Now one foot. Now the other." → ②</div>
+    </div>
+
+    <div class="quiz-block" id="u2c6">
+      <div class="q-num">Q6 <span class="q-type">빈칸 완성</span></div>
+      <div class="q-text">다음은 이야기의 주제를 정리한 문장입니다. 빈칸에 알맞은 말을 고르시오.<br><br>
+        "Bobby helped Bob walk again, just as Bob had helped Bobby walk when he was ________."</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u2c6',this,false)">① sick</button>
+        <button class="mc-btn" onclick="checkMC('u2c6',this,false)">② old</button>
+        <button class="mc-btn" onclick="checkMC('u2c6',this,true)">③ little (어렸을 때)</button>
+        <button class="mc-btn" onclick="checkMC('u2c6',this,false)">④ happy</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u2c6')">↺</button></div>
+      <div class="quiz-feedback" id="u2c6-fb"></div>
+      <div class="quiz-explain">💡 "When I was little, you held my hands" → Bobby가 어렸을 때(little) Bob이 걸음마를 가르쳤음 → ③</div>
+    </div>
+
+    <div class="quiz-block" id="u2c7">
+      <div class="q-num">Q7 <span class="q-type">요약문 완성</span></div>
+      <div class="q-text">이 이야기의 중심 내용으로 가장 알맞은 것을 고르시오.</div>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="checkMC('u2c7',this,false)">① 블록 놀이의 중요성</button>
+        <button class="mc-btn" onclick="checkMC('u2c7',this,false)">② 병원 치료의 효과</button>
+        <button class="mc-btn" onclick="checkMC('u2c7',this,true)">③ 사랑과 보살핌으로 이어지는 삶의 순환</button>
+        <button class="mc-btn" onclick="checkMC('u2c7',this,false)">④ 자연 속에서의 산책 효과</button>
+      </div>
+      <div class="quiz-actions"><button class="btn-reset" onclick="resetMC('u2c7')">↺</button></div>
+      <div class="quiz-feedback" id="u2c7-fb"></div>
+      <div class="quiz-explain">💡 어렸을 때 Bob이 Bobby를 돌봐준 것처럼, Bobby가 Bob을 돌봐주는 순환적 사랑이 주제 → ③</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥서술형 -->
+<div class="tab-content" id="u2-t6">
+  <div class="section-card">
+    <div class="section-title">✍️ 서술형 문제</div>
+
+    <div class="quiz-block">
+      <div class="q-num">서술형 1</div>
+      <div class="q-text"><b>Bob이 병원에서 돌아왔을 때의 상태와, 이후 Bobby가 어떻게 도왔는지를 한국어로 서술하시오.</b><br>
+        <small style="color:#888">조건: 두 가지 내용을 각 2문장 이상, 총 4문장으로 쓸 것</small></div>
+      <div class="essay-lines"><div></div><div></div><div></div></div>
+      <button class="btn-toggle-ans" onclick="toggleAnswer(this)">📋 모범답안 보기</button>
+      <div class="model-answer">
+        Bob은 병원에서 돌아왔지만 말도 하지 못하고 움직이지도 못한 채 침대에만 누워 있었다. 팔과 다리를 움직일 수 없는 상태였다.<br>
+        Bobby는 블록을 가지고 Bob의 방에 들어가 탑을 함께 쌓으며 Bob의 마음을 열었다. 날씨가 좋아졌을 때 Bobby는 Bob 앞에 서서 "Now one foot, now the other"라고 말하며 걷는 연습을 도왔다.
+      </div>
+    </div>
+
+    <div class="quiz-block">
+      <div class="q-num">서술형 2</div>
+      <div class="q-text"><b>다음 조건에 맞게 영어 문장을 완성하시오.</b><br>
+        <small style="color:#888">조건: 관계대명사 who 또는 which를 사용하여 Bob과 Bobby의 관계를 설명하는 문장을 30단어 내외로 쓸 것</small></div>
+      <div class="essay-lines"><div></div><div></div><div></div></div>
+      <button class="btn-toggle-ans" onclick="toggleAnswer(this)">📋 모범답안 보기</button>
+      <div class="model-answer">
+        Bob was the grandfather who taught Bobby how to walk. Later, Bobby helped Bob, who couldn't walk anymore, take his first steps again by saying "Now one foot, now the other."
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦정답지 -->
+<div class="tab-content" id="u2-t7">
+  <div class="section-card">
+    <div class="section-title">📋 정답지 · 모범답안</div>
+
+    <div class="ans-section">
+      <h3>④ 문법 연습문제 정답</h3>
+      <div class="ans-list">
+        <div class="ans-item"><span class="a-num">Q1</span><span class="a-val">① who ② which</span></div>
+        <div class="ans-item"><span class="a-num">Q2</span><span class="a-val">② half past two</span></div>
+        <div class="ans-item"><span class="a-num">Q3</span><span class="a-val">② which → who (사람 선행사)</span></div>
+        <div class="ans-item"><span class="a-num">Q4</span><span class="a-val">① Is ② if</span></div>
+        <div class="ans-item"><span class="a-num">Q5</span><span class="a-val">② which</span></div>
+        <div class="ans-item"><span class="a-num">Q6</span><span class="a-val">① to ② seven</span></div>
+      </div>
+    </div>
+
+    <div class="ans-section">
+      <h3>⑤ 본문이해 문제 정답</h3>
+      <div class="ans-list">
+        <div class="ans-item"><span class="a-num">Q1</span><span class="a-val">T</span></div>
+        <div class="ans-item"><span class="a-num">Q2</span><span class="a-val">F (병문안 불가)</span></div>
+        <div class="ans-item"><span class="a-num">Q3</span><span class="a-val">T</span></div>
+        <div class="ans-item"><span class="a-num">Q4</span><span class="a-val">③ 말도 못 하고 움직이지도 못하며 침대에 누워 있었다</span></div>
+        <div class="ans-item"><span class="a-num">Q5</span><span class="a-val">② Bob 앞에 서서 한 발씩 내딛도록 말해주었다</span></div>
+        <div class="ans-item"><span class="a-num">Q6</span><span class="a-val">③ little</span></div>
+        <div class="ans-item"><span class="a-num">Q7</span><span class="a-val">③ 사랑과 보살핌으로 이어지는 삶의 순환</span></div>
+      </div>
+    </div>
+
+    <div class="ans-section">
+      <h3>⑥ 서술형 모범답안</h3>
+      <div class="ans-list">
+        <div class="ans-item" style="flex-direction:column;gap:4px;">
+          <span class="a-num">서술형 1</span>
+          <span class="a-val">Bob은 말도 못 하고 움직이지도 못한 채 침대에 누워 있었다. 팔·다리를 움직일 수 없었다. Bobby는 블록을 가지고 Bob의 방에 들어가 탑 쌓기를 제안했다. 날씨가 좋아졌을 때 Bobby는 "Now one foot, now the other"라고 말하며 Bob의 걷기를 도왔다.</span>
+        </div>
+        <div class="ans-item" style="flex-direction:column;gap:4px;">
+          <span class="a-num">서술형 2</span>
+          <span class="a-val">Bob was the grandfather who taught Bobby how to walk. Later, Bobby helped Bob, who couldn't walk anymore, take his first steps again by saying "Now one foot, now the other."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end u2 -->
+</main>
+</div><!-- end layout -->
+
+<script>
+/* ── 사이드바 토글 ── */
+function toggleSidebar(){
+  var sb = document.getElementById('sidebar');
+  sb.classList.toggle('open');
+}
+
+/* ── 단원 전환 ── */
+function showUnit(uid){
+  var panels = document.querySelectorAll('.unit-panel');
+  for(var i=0;i<panels.length;i++) panels[i].classList.remove('active');
+  var items = document.querySelectorAll('.sidebar-item');
+  for(var i=0;i<items.length;i++) items[i].classList.remove('active');
+
+  document.getElementById(uid).classList.add('active');
+  var sideItems = document.querySelectorAll('.sidebar-item');
+  var idx = uid === 'u1' ? 0 : 1;
+  sideItems[idx].classList.add('active');
+
+  // 사이드바 닫기 (모바일)
+  document.getElementById('sidebar').classList.remove('open');
+}
+
+/* ── 탭 전환 ── */
+function showTab(uid, tid){
+  var panel = document.getElementById(uid);
+  var contents = panel.querySelectorAll('.tab-content');
+  for(var i=0;i<contents.length;i++) contents[i].classList.remove('active');
+  var btns = panel.querySelectorAll('.tab-btn');
+  for(var i=0;i<btns.length;i++) btns[i].classList.remove('active');
+
+  document.getElementById(uid+'-'+tid).classList.add('active');
+  var idx = parseInt(tid.replace('t','')) - 1;
+  btns[idx].classList.add('active');
+}
+
+/* ── 객관식 (MC) ── */
+function checkMC(qid, btn, isCorrect){
+  var block = document.getElementById(qid);
+  var btns = block.querySelectorAll('.mc-btn');
+  for(var i=0;i<btns.length;i++){
+    btns[i].disabled = true;
+    btns[i].classList.remove('correct-ans','wrong-ans');
+  }
+  var fb = document.getElementById(qid+'-fb');
+  if(isCorrect){
+    btn.classList.add('correct-ans');
+    fb.textContent = '✓ 정답입니다!';
+    fb.className = 'quiz-feedback correct';
+  } else {
+    btn.classList.add('wrong-ans');
+    fb.textContent = '✗ 틀렸습니다. 다시 확인해보세요.';
+    fb.className = 'quiz-feedback wrong';
+  }
+}
+
+function resetMC(qid){
+  var block = document.getElementById(qid);
+  var btns = block.querySelectorAll('.mc-btn');
+  for(var i=0;i<btns.length;i++){
+    btns[i].disabled = false;
+    btns[i].classList.remove('correct-ans','wrong-ans');
+  }
+  var fb = document.getElementById(qid+'-fb');
+  fb.textContent = ''; fb.className = 'quiz-feedback';
+}
+
+/* ── 빈칸 단일 ── */
+function checkFill(qid, answer){
+  var input = document.getElementById(qid+'a');
+  var fb = document.getElementById(qid+'-fb');
+  var val = input.value.trim();
+  if(val.toLowerCase() === answer.toLowerCase()){
+    input.classList.add('correct'); input.classList.remove('wrong');
+    fb.textContent = '✓ 정답입니다!'; fb.className = 'quiz-feedback correct';
+  } else {
+    input.classList.add('wrong'); input.classList.remove('correct');
+    fb.textContent = '✗ 틀렸습니다. 정답: ' + answer; fb.className = 'quiz-feedback wrong';
+  }
+}
+
+function resetFill(qid){
+  var input = document.getElementById(qid+'a');
+  input.value = ''; input.classList.remove('correct','wrong');
+  var fb = document.getElementById(qid+'-fb');
+  fb.textContent = ''; fb.className = 'quiz-feedback';
+}
+
+/* ── 빈칸 복수 ── */
+function checkFillMulti(qid, answers){
+  var letters = ['a','b','c','d'];
+  var allCorrect = true;
+  var fb = document.getElementById(qid+'-fb');
+  for(var i=0;i<answers.length;i++){
+    var input = document.getElementById(qid+letters[i]);
+    if(!input) continue;
+    var val = input.value.trim();
+    if(val.toLowerCase() === answers[i].toLowerCase()){
+      input.classList.add('correct'); input.classList.remove('wrong');
+    } else {
+      input.classList.add('wrong'); input.classList.remove('correct');
+      allCorrect = false;
+    }
+  }
+  if(allCorrect){
+    fb.textContent = '✓ 정답입니다!'; fb.className = 'quiz-feedback correct';
+  } else {
+    fb.textContent = '✗ 틀렸습니다. 정답: ' + answers.join(' / '); fb.className = 'quiz-feedback wrong';
+  }
+}
+
+function resetFillMulti(qid, count){
+  var letters = ['a','b','c','d'];
+  for(var i=0;i<count;i++){
+    var input = document.getElementById(qid+letters[i]);
+    if(input){ input.value = ''; input.classList.remove('correct','wrong'); }
+  }
+  var fb = document.getElementById(qid+'-fb');
+  fb.textContent = ''; fb.className = 'quiz-feedback';
+}
+
+/* ── 모범답안 토글 ── */
+function toggleAnswer(btn){
+  var ma = btn.nextElementSibling;
+  if(ma.classList.contains('show')){
+    ma.classList.remove('show');
+    btn.textContent = '📋 모범답안 보기';
+  } else {
+    ma.classList.add('show');
+    btn.textContent = '📋 모범답안 닫기';
+  }
+}
+</script>
+</body>
+</html>
